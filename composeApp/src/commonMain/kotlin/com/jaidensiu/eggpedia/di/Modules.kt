@@ -6,9 +6,9 @@ import com.jaidensiu.eggpedia.data.IEggsRepository
 import com.jaidensiu.eggpedia.data.IRemoteEggsApi
 import com.jaidensiu.eggpedia.data.RemoteEggsApi
 import com.jaidensiu.eggpedia.presentation.EggsViewModel
-import org.koin.compose.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
