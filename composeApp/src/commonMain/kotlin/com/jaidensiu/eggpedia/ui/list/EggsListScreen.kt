@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.presentation.list
+package com.jaidensiu.eggpedia.ui.list
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text

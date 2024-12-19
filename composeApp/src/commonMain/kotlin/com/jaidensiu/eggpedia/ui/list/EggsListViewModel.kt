@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.presentation.list
+package com.jaidensiu.eggpedia.ui.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

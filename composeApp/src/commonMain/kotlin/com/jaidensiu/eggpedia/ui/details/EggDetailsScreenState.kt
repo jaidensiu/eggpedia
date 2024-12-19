@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.presentation.details
+package com.jaidensiu.eggpedia.ui.details
 
 data class EggDetailsScreenState(
     val name: String

@@ -6,8 +6,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.jaidensiu.eggpedia.presentation.list.EggsListScreen
-import com.jaidensiu.eggpedia.presentation.list.EggsListViewModel
+import com.jaidensiu.eggpedia.ui.list.EggsListScreen
+import com.jaidensiu.eggpedia.ui.list.EggsListViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 

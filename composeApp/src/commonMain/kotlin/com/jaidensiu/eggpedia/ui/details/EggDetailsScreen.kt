@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.presentation.details
+package com.jaidensiu.eggpedia.ui.details
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
