@@ -1,7 +1,6 @@
-package com.jaidensiu.eggpedia.presentation
+package com.jaidensiu.eggpedia.presentation.list
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -10,13 +9,13 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun EggsListScreen(
-    viewModel: EggsViewModel = koinViewModel(),
+    viewModel: EggsListViewModel = koinViewModel(),
     modifier: Modifier = Modifier
 ) {
     val state = viewModel.state.collectAsState()
 
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier
     ) {
         state.value.eggs.forEach {
             Text(

@@ -1,15 +1,13 @@
-package com.jaidensiu.eggpedia.data
+package com.jaidensiu.eggpedia.data.remote
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 
 class RemoteEggsApi(private val client: HttpClient) : IRemoteEggsApi {
-    override suspend fun getEggs(): List<Egg> {
+    override suspend fun getEggs(): List<EggDto> {
         return try {
-            client
-                .get(urlString = BASE_URL + EGGS)
-                .body()
+            client.get(urlString = BASE_URL + EGGS).body()
         } catch (e: Exception) {
             e.printStackTrace()
             emptyList()
