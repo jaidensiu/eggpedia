@@ -30,7 +30,8 @@ fun App() {
                 }
                 composable<Route.EggsList> {
                     EggsListScreen(
-                        viewModel = koinViewModel<EggsListViewModel>()
+                        viewModel = koinViewModel<EggsListViewModel>(),
+                        onClickBack = { navController.navigate(route = Route.Home) }
                     )
                 }
             }

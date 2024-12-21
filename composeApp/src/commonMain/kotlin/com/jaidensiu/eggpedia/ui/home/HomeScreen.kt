@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,12 +22,6 @@ fun HomeScreen(
     onClickCreateRecipe: () -> Unit
 ) {
     val state = viewModel.state.collectAsState()
-
-    DisposableEffect(Unit) {
-        val onTimeChange = { viewModel.updateTimeOfDay() }
-        registerTimeChangeListener { onTimeChange() }
-        onDispose { unregisterTimeChangeListener() }
-    }
 
     Column(
         modifier = Modifier

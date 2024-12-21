@@ -11,10 +11,16 @@ class HomeViewModel : ViewModel() {
 
     init {
         updateTimeOfDay()
+        registerTimeChangeListener { updateTimeOfDay() }
     }
 
-    fun updateTimeOfDay() {
+    private fun updateTimeOfDay() {
         val timeOfDay = getTimeOfDay()
         _state.update { it.copy(timeOfDay = timeOfDay) }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        unregisterTimeChangeListener()
     }
 }
