@@ -5,6 +5,7 @@ import com.jaidensiu.eggpedia.data.remote.HttpClientInstance
 import com.jaidensiu.eggpedia.data.IEggsRepository
 import com.jaidensiu.eggpedia.data.remote.IRemoteEggsApi
 import com.jaidensiu.eggpedia.data.remote.RemoteEggsApi
+import com.jaidensiu.eggpedia.ui.home.HomeViewModel
 import com.jaidensiu.eggpedia.ui.list.EggsListViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
@@ -19,4 +20,5 @@ val sharedModule = module {
     singleOf(::RemoteEggsApi).bind<IRemoteEggsApi>()
     singleOf(::EggsRepository).bind<IEggsRepository>()
     viewModelOf(::EggsListViewModel)
+    viewModelOf(::HomeViewModel)
 }
