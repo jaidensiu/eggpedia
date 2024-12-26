@@ -3,7 +3,6 @@ package com.jaidensiu.eggpedia.ui.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jaidensiu.eggpedia.app.Route
-import com.jaidensiu.eggpedia.data.Egg
 import com.jaidensiu.eggpedia.data.EggsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -33,9 +32,5 @@ class EggsListViewModel(private val repository: EggsRepository) : ViewModel() {
 
     fun onSearchQueryChange(query: String) {
         _state.update { it.copy(searchQuery = query) }
-    }
-
-    fun onSelectEgg(egg: Egg) {
-
     }
 }

@@ -37,6 +37,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.jaidensiu.eggpedia.app.Route
+import com.jaidensiu.eggpedia.data.Egg
 import com.jaidensiu.eggpedia.ui.shared.isAndroid
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -46,7 +47,8 @@ import org.koin.compose.viewmodel.koinViewModel
 fun EggsListScreen(
     viewModel: EggsListViewModel = koinViewModel(),
     route: Route,
-    onClickBack: () -> Unit
+    onClickBack: () -> Unit,
+    onSelectEgg: (Egg) -> Unit
 ) {
     val state = viewModel.state.collectAsState()
     val interactionSource = remember { MutableInteractionSource() }
@@ -135,7 +137,7 @@ fun EggsListScreen(
                         modifier = Modifier.fillMaxWidth(),
                         onClick = {
                             focusManager.clearFocus()
-                            viewModel.onSelectEgg(name = it.name)
+                            onSelectEgg(it)
                         }
                     )
                 }

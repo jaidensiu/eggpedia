@@ -1,5 +1,7 @@
 package com.jaidensiu.eggpedia.ui.details
 
-class EggDetailsViewModel {
+import androidx.lifecycle.ViewModel
+
+class EggDetailsViewModel : ViewModel() {
     // TODO
 }
