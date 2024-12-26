@@ -8,12 +8,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -28,6 +33,7 @@ fun EggDetailsScreen(
     onClickBack: () -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    var showDialog by remember { mutableStateOf(value = false) }
 
     LaunchedEffect(Unit) {
         viewModel.observeSavedStatus(egg.id.toString())
@@ -46,13 +52,13 @@ fun EggDetailsScreen(
             Button(
                 onClick = {
                     if (state.isSaved) {
-                        viewModel.deleteEggFromLocal(egg.id.toString())
+                        showDialog = true
                     } else {
                         viewModel.saveEggToLocal(egg)
                     }
                 }
             ) {
-                Text(text = if (state.isSaved) "un-save" else "save")
+                Text(text = if (state.isSaved) "remove" else "save")
             }
         }
         Spacer(modifier = Modifier.height(12.dp))
@@ -69,5 +75,28 @@ fun EggDetailsScreen(
                 }
             }
         }
+    }
+
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        viewModel.deleteEggFromLocal(egg.id.toString())
+                        showDialog = false
+                    }
+                ) {
+                    Text(text = "yes")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDialog = false }) {
+                    Text(text = "no")
+                }
+            },
+            title = { Text(text = "remove egg recipe confirmation") },
+            text = { Text(text = "are you sure you want to remove this egg recipe?") },
+        )
     }
 }
