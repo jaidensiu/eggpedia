@@ -19,7 +19,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun HomeScreen(
     viewModel: HomeViewModel = koinViewModel(),
     onClickEggsList: () -> Unit,
-    onClickCreateRecipe: () -> Unit
+    onClickSavedEggsList: () -> Unit
 ) {
     val state = viewModel.state.collectAsState()
 
@@ -37,8 +37,8 @@ fun HomeScreen(
             Text(text = "explore list of egg recipes")
         }
         Spacer(modifier = Modifier.height(12.dp))
-        Button(onClick = { onClickCreateRecipe() }) {
-            Text(text = "create your own egg recipe")
+        Button(onClick = { onClickSavedEggsList() }) {
+            Text(text = "view my saved egg recipes")
         }
     }
 }

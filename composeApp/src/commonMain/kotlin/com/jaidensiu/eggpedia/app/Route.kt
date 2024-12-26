@@ -1,5 +1,6 @@
 package com.jaidensiu.eggpedia.app
 
+import com.jaidensiu.eggpedia.data.Egg
 import kotlinx.serialization.Serializable
 
 sealed interface Route {
@@ -13,5 +14,8 @@ sealed interface Route {
     data object EggsList : Route
 
     @Serializable
-    data class EggDetail(val id: String) : Route
+    data object SavedEggsList : Route
+
+    @Serializable
+    data class EggDetail(val egg: Egg) : Route
 }
