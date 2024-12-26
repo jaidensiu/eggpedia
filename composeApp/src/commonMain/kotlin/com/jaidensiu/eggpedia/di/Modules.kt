@@ -1,8 +1,11 @@
 package com.jaidensiu.eggpedia.di
 
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.jaidensiu.eggpedia.data.EggsRepository
-import com.jaidensiu.eggpedia.data.remote.HttpClientInstance
 import com.jaidensiu.eggpedia.data.IEggsRepository
+import com.jaidensiu.eggpedia.data.local.DatabaseInstance
+import com.jaidensiu.eggpedia.data.local.LocalEggsDatabase
+import com.jaidensiu.eggpedia.data.remote.HttpClientInstance
 import com.jaidensiu.eggpedia.data.remote.IRemoteEggsApi
 import com.jaidensiu.eggpedia.data.remote.RemoteEggsApi
 import com.jaidensiu.eggpedia.ui.details.EggDetailsViewModel
@@ -19,6 +22,8 @@ expect val platformModule: Module
 
 val sharedModule = module {
     single { HttpClientInstance.create(get()) }
+    single { get<DatabaseInstance>().create().setDriver(BundledSQLiteDriver()).build() }
+    single { get<LocalEggsDatabase>().localEggDao }
     singleOf(::RemoteEggsApi).bind<IRemoteEggsApi>()
     singleOf(::EggsRepository).bind<IEggsRepository>()
     viewModelOf(::EggsListViewModel)

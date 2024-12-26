@@ -1,6 +1,5 @@
 package com.jaidensiu.eggpedia.app
 
-import com.jaidensiu.eggpedia.data.Egg
 import kotlinx.serialization.Serializable
 
 sealed interface Route {

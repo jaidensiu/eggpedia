@@ -1,5 +1,8 @@
 package com.jaidensiu.eggpedia.ui.details
 
+import com.jaidensiu.eggpedia.data.Egg
+
 data class EggDetailsScreenState(
-    val name: String
+    val egg: Egg? = null,
+    val isSaved: Boolean = false
 )

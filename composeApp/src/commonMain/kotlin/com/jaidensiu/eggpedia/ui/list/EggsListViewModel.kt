@@ -6,6 +6,8 @@ import com.jaidensiu.eggpedia.app.Route
 import com.jaidensiu.eggpedia.data.EggsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -17,12 +19,12 @@ class EggsListViewModel(private val repository: EggsRepository) : ViewModel() {
         viewModelScope.launch {
             try {
                 if (route == Route.EggsList) {
-                    val eggs = repository.getEggs()
+                    val eggs = repository.getRemoteEggs()
                     _state.value = EggsListScreenState(eggs = eggs)
                 } else if (route == Route.SavedEggsList) {
-                    // TODO: get cached eggs from db
-                    val eggs = repository.getEggs()
-                    _state.value = EggsListScreenState(eggs = eggs)
+                    repository.getLocalEggs().onEach { localEggs ->
+                        _state.value = EggsListScreenState(eggs = localEggs)
+                    }.collect()
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
