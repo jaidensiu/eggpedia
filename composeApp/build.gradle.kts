@@ -58,6 +58,7 @@ kotlin {
             implementation(libs.sqlite.bundled)
             implementation(libs.jetbrains.compose.navigation)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.bundles.coil)
         }
 
         nativeMain.dependencies {
