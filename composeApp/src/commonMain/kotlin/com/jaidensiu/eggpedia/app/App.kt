@@ -48,7 +48,7 @@ fun App() {
                         onClickBack = { navController.navigate(route = Route.Home) },
                         onSelectEgg = { egg ->
                             selectedEggViewModel.onSelectEgg(egg)
-                            navController.navigate(route = Route.EggDetails(egg))
+                            navController.navigate(route = Route.EggDetails(egg.id.toString()))
                         }
                     )
                 }
@@ -62,7 +62,7 @@ fun App() {
                         onClickBack = { navController.navigate(route = Route.Home) },
                         onSelectEgg = { egg ->
                             selectedEggViewModel.onSelectEgg(egg)
-                            navController.navigate(route = Route.EggDetails(egg))
+                            navController.navigate(route = Route.EggDetails(egg.id.toString()))
                         }
                     )
                 }
@@ -73,7 +73,9 @@ fun App() {
 
                     selectedEgg.value?.let { egg ->
                         EggDetailsScreen(
-                            egg = egg
+                            viewModel = viewModel,
+                            egg = egg,
+                            onClickBack = { navController.navigateUp() }
                         )
                     }
                 }

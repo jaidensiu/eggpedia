@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -55,6 +56,7 @@ fun EggsListScreen(
     val focusRequester = remember { FocusRequester() }
     val focusManager = LocalFocusManager.current
     var debouncedQuery by remember { mutableStateOf(state.value.searchQuery) }
+    val filteredEggs = state.value.eggs.filter { it.name.startsWith(prefix = debouncedQuery, ignoreCase = true) }
 
     LaunchedEffect(debouncedQuery) {
         viewModel.onSearchQueryChange(debouncedQuery)
@@ -62,7 +64,7 @@ fun EggsListScreen(
 
     LaunchedEffect(state.value.searchQuery) {
         launch {
-            delay(timeMillis = 500L)
+            delay(timeMillis = 250L)
             debouncedQuery = state.value.searchQuery
         }
     }
@@ -129,18 +131,26 @@ fun EggsListScreen(
 
             }
             Spacer(modifier = Modifier.height(12.dp))
-            state.value.eggs
-                .filter { it.name.startsWith(prefix = debouncedQuery, ignoreCase = true) }
-                .forEach {
-                    EggListItem(
-                        egg = it,
+            filteredEggs.forEach {
+                EggListItem(
+                    egg = it,
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = {
+                        focusManager.clearFocus()
+                        onSelectEgg(it)
+                    }
+                )
+            }.also {
+                if (filteredEggs.isEmpty() && debouncedQuery.isNotBlank()) {
+                    Column(
                         modifier = Modifier.fillMaxWidth(),
-                        onClick = {
-                            focusManager.clearFocus()
-                            onSelectEgg(it)
-                        }
-                    )
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(text = "There are no egg recipes for your search")
+                    }
                 }
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ import com.jaidensiu.eggpedia.data.remote.EggDto
 object EggMappers {
     fun EggDto.toEgg(): Egg {
         return Egg(
+            id = id,
             name = name,
             imageUrl = imageUrl,
             videoUrl = videoUrl,

@@ -17,5 +17,5 @@ sealed interface Route {
     data object SavedEggsList : Route
 
     @Serializable
-    data class EggDetails(val egg: Egg) : Route
+    data class EggDetails(val id: String) : Route
 }
