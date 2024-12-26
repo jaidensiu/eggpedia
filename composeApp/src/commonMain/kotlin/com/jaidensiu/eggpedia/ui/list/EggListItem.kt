@@ -20,7 +20,7 @@ fun EggListItem(
 ) {
     Card(
         onClick = { onClick() },
-        modifier = modifier.padding(bottom = 6.dp)
+        modifier = modifier.padding(bottom = 12.dp)
     ) {
         Row(modifier = Modifier.padding(12.dp)) {
             Text(text = egg.name)
