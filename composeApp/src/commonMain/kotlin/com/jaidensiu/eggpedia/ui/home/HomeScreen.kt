@@ -38,7 +38,7 @@ fun HomeScreen(
         }
         Spacer(modifier = Modifier.height(12.dp))
         Button(onClick = { onClickSavedEggsList() }) {
-            Text(text = "View my saved egg recipes")
+            Text(text = "View saved egg recipes")
         }
     }
 }

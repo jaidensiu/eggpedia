@@ -118,15 +118,21 @@ fun EggsListScreen(
                         interactionSource = interactionSource,
                         placeholder = {
                             if (route == Route.EggsList) {
-                                Text(text = "Search for an egg recipe")
+                                Text(
+                                    text = "Search for a recipe",
+                                    maxLines = 1
+                                )
                             } else if (route == Route.SavedEggsList) {
-                                Text(text = "Search for a saved egg recipe")
+                                Text(
+                                    text = "Search for a saved recipe",
+                                    maxLines = 1
+                                )
                             }
                         },
                         contentPadding = if (state.value.searchQuery.isBlank()) {
-                            PaddingValues(6.dp)
+                            if (isAndroid) PaddingValues(6.dp) else PaddingValues(5.dp)
                         } else {
-                            PaddingValues(10.dp)
+                            if (isAndroid) PaddingValues(10.dp) else PaddingValues(9.dp)
                         }
                     )
                 }
