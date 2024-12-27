@@ -2,6 +2,7 @@ package com.jaidensiu.eggpedia.ui.details
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -49,7 +50,8 @@ fun EggDetailsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 32.dp, vertical = if (isAndroid) 32.dp else 16.dp)
+            .background(MaterialTheme.colors.background)
+            .padding(start = 32.dp, top = if (isAndroid) 32.dp else 54.dp, end = 32.dp, bottom = 24.dp)
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
             TextButton(

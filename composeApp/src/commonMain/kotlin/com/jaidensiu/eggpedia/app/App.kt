@@ -1,6 +1,5 @@
 package com.jaidensiu.eggpedia.app
 
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
@@ -18,6 +17,7 @@ import com.jaidensiu.eggpedia.ui.home.HomeViewModel
 import com.jaidensiu.eggpedia.ui.list.EggsListScreen
 import com.jaidensiu.eggpedia.ui.list.EggsListViewModel
 import com.jaidensiu.eggpedia.ui.shared.SelectedEggViewModel
+import com.jaidensiu.eggpedia.ui.theme.EggpediaTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -26,7 +26,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun App() {
     val navController = rememberNavController()
 
-    MaterialTheme {
+    EggpediaTheme {
         NavHost(navController = navController, startDestination = Route.RouteGraph) {
             navigation<Route.RouteGraph>(startDestination = Route.Home) {
                 composable<Route.Home> {
