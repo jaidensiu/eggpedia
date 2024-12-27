@@ -84,7 +84,7 @@ fun EggDetailsScreen(
                 )
             }
         }
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(2.dp))
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             item {
                 Card(

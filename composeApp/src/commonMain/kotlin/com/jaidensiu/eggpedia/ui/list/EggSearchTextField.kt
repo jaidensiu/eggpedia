@@ -6,15 +6,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldColors
 import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.TextFieldDefaults.outlinedTextFieldPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
@@ -76,9 +74,15 @@ fun EggSearchTextField(
                 }
             },
             contentPadding = if (searchQuery.value.isBlank()) {
-                if (isAndroid) PaddingValues(6.dp) else PaddingValues(5.dp)
+                outlinedTextFieldPadding(
+                    top = if (isAndroid) 6.dp else 5.dp,
+                    bottom = if (isAndroid) 6.dp else 5.dp,
+                )
             } else {
-                if (isAndroid) PaddingValues(10.dp) else PaddingValues(9.dp)
+                outlinedTextFieldPadding(
+                    top = if (isAndroid) 10.dp else 9.dp,
+                    bottom = if (isAndroid) 10.dp else 9.dp,
+                )
             }
         )
     }

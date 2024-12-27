@@ -112,7 +112,7 @@ fun EggsListScreen(
                     route = route
                 )
             }
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(2.dp))
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
                 if (!isConnected && route == Route.EggsList) {
                     item {
