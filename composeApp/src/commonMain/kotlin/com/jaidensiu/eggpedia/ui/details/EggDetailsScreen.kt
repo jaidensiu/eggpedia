@@ -51,14 +51,22 @@ fun EggDetailsScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
-            .padding(start = 32.dp, top = if (isAndroid) 32.dp else 54.dp, end = 32.dp, bottom = 24.dp)
+            .padding(
+                start = 32.dp,
+                top = if (isAndroid) 32.dp else 54.dp,
+                end = 32.dp,
+                bottom = 24.dp
+            )
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
             TextButton(
                 onClick = { onClickBack() },
                 border = BorderStroke(width = 1.dp, color = MaterialTheme.colors.primary)
             ) {
-                Text(text = "Back")
+                Text(
+                    text = "Back",
+                    color = MaterialTheme.colors.primary
+                )
             }
             Spacer(modifier = Modifier.weight(1f))
             Button(
@@ -70,7 +78,10 @@ fun EggDetailsScreen(
                     }
                 }
             ) {
-                Text(text = if (state.isSaved) "Remove" else "Save")
+                Text(
+                    text = if (state.isSaved) "Remove" else "Save",
+                    color = MaterialTheme.colors.background
+                )
             }
         }
         Spacer(modifier = Modifier.height(12.dp))

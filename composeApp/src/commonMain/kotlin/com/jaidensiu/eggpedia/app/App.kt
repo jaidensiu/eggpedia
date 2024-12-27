@@ -27,7 +27,10 @@ fun App() {
     val navController = rememberNavController()
 
     EggpediaTheme {
-        NavHost(navController = navController, startDestination = Route.RouteGraph) {
+        NavHost(
+            navController = navController,
+            startDestination = Route.RouteGraph
+        ) {
             navigation<Route.RouteGraph>(startDestination = Route.Home) {
                 composable<Route.Home> {
                     val viewModel = koinViewModel<HomeViewModel>()
