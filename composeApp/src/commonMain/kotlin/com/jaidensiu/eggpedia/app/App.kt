@@ -12,6 +12,8 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.jaidensiu.eggpedia.ui.details.EggDetailsScreen
 import com.jaidensiu.eggpedia.ui.details.EggDetailsViewModel
+import com.jaidensiu.eggpedia.ui.game.EggQuizGameScreen
+import com.jaidensiu.eggpedia.ui.game.EggQuizGameViewModel
 import com.jaidensiu.eggpedia.ui.home.HomeScreen
 import com.jaidensiu.eggpedia.ui.home.HomeViewModel
 import com.jaidensiu.eggpedia.ui.list.EggsListScreen
@@ -38,7 +40,8 @@ fun App() {
                     HomeScreen(
                         viewModel = viewModel,
                         onClickEggsList = { navController.navigate(route = Route.EggsList) },
-                        onClickSavedEggsList = { navController.navigate(route = Route.SavedEggsList) }
+                        onClickSavedEggsList = { navController.navigate(route = Route.SavedEggsList) },
+                        onClickEggQuizGame = { navController.navigate(route = Route.EggQuizGame) }
                     )
                 }
                 composable<Route.EggsList> { navBackStackEntry ->
@@ -81,6 +84,14 @@ fun App() {
                             onClickBack = { navController.navigateUp() }
                         )
                     }
+                }
+                composable<Route.EggQuizGame> {
+                    val viewModel = koinViewModel<EggQuizGameViewModel>()
+
+                    EggQuizGameScreen(
+                        viewModel = viewModel,
+                        onClickBack = { navController.navigateUp() }
+                    )
                 }
             }
         }

@@ -22,7 +22,8 @@ import org.koin.compose.viewmodel.koinViewModel
 fun HomeScreen(
     viewModel: HomeViewModel = koinViewModel(),
     onClickEggsList: () -> Unit,
-    onClickSavedEggsList: () -> Unit
+    onClickSavedEggsList: () -> Unit,
+    onClickEggQuizGame: () -> Unit
 ) {
     val state = viewModel.state.collectAsState()
 
@@ -59,6 +60,16 @@ fun HomeScreen(
         ) {
             Text(
                 text = "View saved egg recipes",
+                color = MaterialTheme.colors.onPrimary
+            )
+        }
+        Spacer(modifier = Modifier.height(12.dp))
+        Button(
+            onClick = { onClickEggQuizGame() },
+            colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+        ) {
+            Text(
+                text = "Play egg quiz game",
                 color = MaterialTheme.colors.onPrimary
             )
         }
