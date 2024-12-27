@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterialApi::class)
-
 package com.jaidensiu.eggpedia.ui.list
 
 import androidx.compose.foundation.BorderStroke
@@ -18,7 +16,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -83,7 +80,12 @@ fun EggsListScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = 32.dp, top = if (isAndroid) 32.dp else 54.dp, end = 32.dp, bottom = 24.dp)
+                .padding(
+                    start = 32.dp,
+                    top = if (isAndroid) 32.dp else 54.dp,
+                    end = 32.dp,
+                    bottom = 24.dp
+                )
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),

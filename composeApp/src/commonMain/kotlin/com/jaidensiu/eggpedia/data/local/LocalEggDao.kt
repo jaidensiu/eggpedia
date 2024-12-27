@@ -13,9 +13,6 @@ interface LocalEggDao {
     @Query("SELECT * FROM EggEntity")
     fun getEggs(): Flow<List<EggEntity>>
 
-    @Query("SELECT * FROM EggEntity WHERE id = :id")
-    suspend fun getSavedEgg(id: String): EggEntity?
-
     @Query("DELETE FROM EggEntity WHERE id = :id")
     suspend fun deleteSavedEgg(id: String)
 }
