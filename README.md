@@ -1,4 +1,4 @@
-# eggpedia
+# Eggpedia
 
 A Kotlin Multiplatform Android and iOS mobile app that illustrates different ways you can cook eggs.
 

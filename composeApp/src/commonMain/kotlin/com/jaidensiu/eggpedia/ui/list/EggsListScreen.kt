@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.Button
 import androidx.compose.material.ExperimentalMaterialApi
@@ -93,7 +95,7 @@ fun EggsListScreen(
                         onClickBack()
                     }
                 ) {
-                    Text(text = "back")
+                    Text(text = "Back")
                 }
                 Spacer(modifier = Modifier.width(12.dp))
                 BasicTextField(
@@ -116,9 +118,9 @@ fun EggsListScreen(
                         interactionSource = interactionSource,
                         placeholder = {
                             if (route == Route.EggsList) {
-                                Text(text = "search for an egg recipe")
+                                Text(text = "Search for an egg recipe")
                             } else if (route == Route.SavedEggsList) {
-                                Text(text = "search for a saved egg recipe")
+                                Text(text = "Search for a saved egg recipe")
                             }
                         },
                         contentPadding = if (state.value.searchQuery.isBlank()) {
@@ -131,23 +133,27 @@ fun EggsListScreen(
 
             }
             Spacer(modifier = Modifier.height(12.dp))
-            filteredEggs.forEach {
-                EggListItem(
-                    egg = it,
-                    modifier = Modifier.fillMaxWidth(),
-                    onClick = {
-                        focusManager.clearFocus()
-                        onSelectEgg(it)
+            LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                if (filteredEggs.isNotEmpty()) {
+                    items(filteredEggs) { egg ->
+                        EggListItem(
+                            egg = egg,
+                            modifier = Modifier.fillMaxWidth(),
+                            onClick = {
+                                focusManager.clearFocus()
+                                onSelectEgg(egg)
+                            }
+                        )
                     }
-                )
-            }.also {
-                if (filteredEggs.isEmpty() && debouncedQuery.isNotBlank()) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(text = "There are no egg recipes for your search")
+                } else if (filteredEggs.isEmpty() && debouncedQuery.isNotBlank()) {
+                    item {
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(text = "There are no egg recipes for your search")
+                        }
                     }
                 }
             }

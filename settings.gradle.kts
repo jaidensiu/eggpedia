@@ -1,4 +1,4 @@
-rootProject.name = "eggpedia"
+rootProject.name = "Eggpedia"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

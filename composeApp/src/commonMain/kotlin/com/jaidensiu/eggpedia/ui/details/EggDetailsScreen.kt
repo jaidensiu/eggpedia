@@ -1,5 +1,7 @@
 package com.jaidensiu.eggpedia.ui.details
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,9 +10,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -20,8 +25,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import coil3.compose.rememberAsyncImagePainter
 import com.jaidensiu.eggpedia.data.Egg
 import com.jaidensiu.eggpedia.ui.shared.isAndroid
 import org.koin.compose.viewmodel.koinViewModel
@@ -34,6 +41,7 @@ fun EggDetailsScreen(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     var showDialog by remember { mutableStateOf(value = false) }
+    val painter = rememberAsyncImagePainter(model = egg.imageUrl)
 
     LaunchedEffect(Unit) {
         viewModel.observeSavedStatus(egg.id.toString())
@@ -46,7 +54,7 @@ fun EggDetailsScreen(
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
             Button(onClick = { onClickBack() }) {
-                Text(text = "back")
+                Text(text = "Back")
             }
             Spacer(modifier = Modifier.weight(1f))
             Button(
@@ -58,20 +66,37 @@ fun EggDetailsScreen(
                     }
                 }
             ) {
-                Text(text = if (state.isSaved) "remove" else "save")
+                Text(text = if (state.isSaved) "Remove" else "Save")
             }
         }
         Spacer(modifier = Modifier.height(12.dp))
-        Card(modifier = Modifier.fillMaxWidth()) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(12.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                Text(text = egg.name)
-                egg.cookingSteps.forEach {
-                    Text(text = it)
+        LazyColumn(modifier = Modifier.fillMaxWidth()) {
+            item {
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 12.dp)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        Text(text = egg.name)
+                        Image(
+                            painter = painter,
+                            contentDescription = ""
+                        )
+                        Text(text = "Cooking steps")
+                        egg.cookingSteps.forEachIndexed { index, step ->
+                            Row(modifier = Modifier.fillMaxWidth()) {
+                                Text(text = "Step ${index + 1}:")
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text(text = step)
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -87,16 +112,16 @@ fun EggDetailsScreen(
                         showDialog = false
                     }
                 ) {
-                    Text(text = "yes")
+                    Text(text = "Yes")
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showDialog = false }) {
-                    Text(text = "no")
+                    Text(text = "No")
                 }
             },
-            title = { Text(text = "remove egg recipe confirmation") },
-            text = { Text(text = "are you sure you want to remove this egg recipe?") },
+            title = { Text(text = "Remove egg recipe confirmation") },
+            text = { Text(text = "Are you sure you want to remove this egg recipe?") },
         )
     }
 }

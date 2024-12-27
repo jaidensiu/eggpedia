@@ -30,15 +30,15 @@ fun HomeScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "good ${state.value.timeOfDay}")
-        Text(text = "welcome to eggpedia")
+        Text(text = "Good ${state.value.timeOfDay}")
+        Text(text = "Welcome to Eggpedia")
         Spacer(modifier = Modifier.height(24.dp))
         Button(onClick = { onClickEggsList() }) {
-            Text(text = "explore list of egg recipes")
+            Text(text = "Explore list of egg recipes")
         }
         Spacer(modifier = Modifier.height(12.dp))
         Button(onClick = { onClickSavedEggsList() }) {
-            Text(text = "view my saved egg recipes")
+            Text(text = "View my saved egg recipes")
         }
     }
 }
