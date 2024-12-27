@@ -34,7 +34,7 @@ fun HomeScreen(
         Text(text = "Welcome to Eggpedia")
         Spacer(modifier = Modifier.height(24.dp))
         Button(onClick = { onClickEggsList() }) {
-            Text(text = "Explore list of egg recipes")
+            Text(text = "Explore egg recipes")
         }
         Spacer(modifier = Modifier.height(12.dp))
         Button(onClick = { onClickSavedEggsList() }) {

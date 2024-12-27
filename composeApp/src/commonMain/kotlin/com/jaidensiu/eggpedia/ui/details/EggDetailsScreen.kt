@@ -25,7 +25,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.rememberAsyncImagePainter
@@ -53,7 +52,10 @@ fun EggDetailsScreen(
             .padding(horizontal = 32.dp, vertical = if (isAndroid) 32.dp else 16.dp)
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
-            Button(onClick = { onClickBack() }) {
+            TextButton(
+                onClick = { onClickBack() },
+                border = BorderStroke(width = 1.dp, color = MaterialTheme.colors.primary)
+            ) {
                 Text(text = "Back")
             }
             Spacer(modifier = Modifier.weight(1f))
