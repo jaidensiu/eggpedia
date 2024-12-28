@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.ui.game
+package com.jaidensiu.eggpedia.ui.games
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class EggQuizGameViewModel(private val repository: EggsRepository) : ViewModel() {
-    private val _state = MutableStateFlow(value = EggQuizGameScreenState())
+class EggQuizGamesViewModel(private val repository: EggsRepository) : ViewModel() {
+    private val _state = MutableStateFlow(value = EggQuizGamesScreenState())
     val state = _state.asStateFlow()
 
     fun observeInternetConnection(isConnected: Boolean) {

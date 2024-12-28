@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.ui.game
+package com.jaidensiu.eggpedia.ui.games
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -28,8 +28,8 @@ import com.plusmobileapps.konnectivity.Konnectivity
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun EggQuizGameScreen(
-    viewModel: EggQuizGameViewModel = koinViewModel(),
+fun EggQuizGamesScreen(
+    viewModel: EggQuizGamesViewModel = koinViewModel(),
     onClickBack: () -> Unit,
     playCookingStepsOrdering: () -> Unit,
     playEggImageMatching: () -> Unit,
