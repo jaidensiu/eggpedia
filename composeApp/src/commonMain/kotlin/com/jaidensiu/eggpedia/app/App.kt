@@ -90,7 +90,10 @@ fun App() {
 
                     EggQuizGameScreen(
                         viewModel = viewModel,
-                        onClickBack = { navController.navigateUp() }
+                        onClickBack = { navController.navigateUp() },
+                        playCookingStepsOrdering = {},
+                        playEggImageMatching = {},
+                        playMixOfQuestions = {}
                     )
                 }
             }

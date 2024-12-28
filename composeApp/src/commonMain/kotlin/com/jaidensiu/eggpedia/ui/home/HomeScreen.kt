@@ -69,7 +69,7 @@ fun HomeScreen(
             colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
         ) {
             Text(
-                text = "Play egg quiz game",
+                text = "Play egg quiz games",
                 color = MaterialTheme.colors.onPrimary
             )
         }

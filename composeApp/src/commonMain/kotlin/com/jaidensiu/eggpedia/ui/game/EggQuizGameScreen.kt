@@ -3,12 +3,15 @@ package com.jaidensiu.eggpedia.ui.game
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -27,7 +30,10 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun EggQuizGameScreen(
     viewModel: EggQuizGameViewModel = koinViewModel(),
-    onClickBack: () -> Unit
+    onClickBack: () -> Unit,
+    playCookingStepsOrdering: () -> Unit,
+    playEggImageMatching: () -> Unit,
+    playMixOfQuestions: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
     val konnectivity = remember { Konnectivity() }
@@ -41,7 +47,7 @@ fun EggQuizGameScreen(
         viewModel.getEggs()
     }
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
@@ -75,14 +81,44 @@ fun EggQuizGameScreen(
             }
         } else {
             Column(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Quiz game goes here",
+                    text = "Which quiz game would you like to play?",
                     color = MaterialTheme.colors.onBackground
                 )
+                Spacer(modifier = Modifier.height(24.dp))
+                Button(
+                    onClick = playCookingStepsOrdering,
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+                ) {
+                    Text(
+                        text = "Cooking steps ordering",
+                        color = MaterialTheme.colors.onPrimary
+                    )
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+                Button(
+                    onClick = playEggImageMatching,
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+                ) {
+                    Text(
+                        text = "Egg image matching",
+                        color = MaterialTheme.colors.onPrimary
+                    )
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+                Button(
+                    onClick = playMixOfQuestions,
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+                ) {
+                    Text(
+                        text = "Mix of questions",
+                        color = MaterialTheme.colors.onPrimary
+                    )
+                }
             }
         }
     }
