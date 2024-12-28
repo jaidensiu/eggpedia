@@ -62,7 +62,7 @@ fun EggQuizGameScreen(
             )
         }
         Spacer(modifier = Modifier.height(2.dp))
-        if (!state.isConnectedToInternet && !isConnected) {
+        if (!state.isConnectedToInternet || !isConnected) {
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.Center,

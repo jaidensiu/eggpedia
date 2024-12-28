@@ -1,5 +1,6 @@
 package com.jaidensiu.eggpedia.ui.details
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,7 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -117,26 +117,16 @@ fun EggDetailsScreen(
         }
     }
 
-    if (showDialog) {
-        AlertDialog(
+    AnimatedVisibility(visible = showDialog) {
+        CustomDialog(
+            modifier = Modifier.padding(horizontal = 48.dp),
+            title = "Are you sure you want to remove this egg recipe?",
             onDismissRequest = { showDialog = false },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        viewModel.deleteEggFromLocal(egg.id.toString())
-                        showDialog = false
-                    }
-                ) {
-                    Text(text = "Yes")
-                }
+            onConfirm = {
+                viewModel.deleteEggFromLocal(egg.id.toString())
+                showDialog = false
             },
-            dismissButton = {
-                TextButton(onClick = { showDialog = false }) {
-                    Text(text = "No")
-                }
-            },
-            title = { Text(text = "Remove egg recipe confirmation") },
-            text = { Text(text = "Are you sure you want to remove this egg recipe?") },
+            onDismiss = { showDialog = false }
         )
     }
 }
