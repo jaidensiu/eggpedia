@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.rememberAsyncImagePainter
 import com.jaidensiu.eggpedia.data.Egg
+import com.jaidensiu.eggpedia.ui.shared.CustomDialog
 import com.jaidensiu.eggpedia.ui.shared.isAndroid
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -121,6 +122,8 @@ fun EggDetailsScreen(
         CustomDialog(
             modifier = Modifier.padding(horizontal = 48.dp),
             title = "Are you sure you want to remove this egg recipe?",
+            dismissText = "No",
+            confirmText = "Yes",
             onDismissRequest = { showDialog = false },
             onConfirm = {
                 viewModel.deleteEggFromLocal(egg.id.toString())

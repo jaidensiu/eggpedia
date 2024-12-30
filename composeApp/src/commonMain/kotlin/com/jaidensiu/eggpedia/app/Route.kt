@@ -20,4 +20,13 @@ sealed interface Route {
 
     @Serializable
     data object EggQuizGames : Route
+
+    @Serializable
+    data object ImageMatchingGame : Route
+
+    @Serializable
+    data object CookingStepsOrderingGame : Route
+
+    @Serializable
+    data object MixOfQuestionsGame : Route
 }

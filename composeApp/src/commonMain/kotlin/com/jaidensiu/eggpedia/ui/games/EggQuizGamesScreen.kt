@@ -31,8 +31,8 @@ import org.koin.compose.viewmodel.koinViewModel
 fun EggQuizGamesScreen(
     viewModel: EggQuizGamesViewModel = koinViewModel(),
     onClickBack: () -> Unit,
-    playCookingStepsOrdering: () -> Unit,
     playEggImageMatching: () -> Unit,
+    playCookingStepsOrdering: () -> Unit,
     playMixOfQuestions: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
@@ -91,21 +91,21 @@ fun EggQuizGamesScreen(
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 Button(
-                    onClick = playCookingStepsOrdering,
-                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
-                ) {
-                    Text(
-                        text = "Cooking steps ordering",
-                        color = MaterialTheme.colors.onPrimary
-                    )
-                }
-                Spacer(modifier = Modifier.height(12.dp))
-                Button(
                     onClick = playEggImageMatching,
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
                 ) {
                     Text(
                         text = "Egg image matching",
+                        color = MaterialTheme.colors.onPrimary
+                    )
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+                Button(
+                    onClick = playCookingStepsOrdering,
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+                ) {
+                    Text(
+                        text = "Cooking steps ordering",
                         color = MaterialTheme.colors.onPrimary
                     )
                 }

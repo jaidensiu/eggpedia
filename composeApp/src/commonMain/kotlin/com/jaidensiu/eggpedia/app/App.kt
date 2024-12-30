@@ -12,8 +12,11 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.jaidensiu.eggpedia.ui.details.EggDetailsScreen
 import com.jaidensiu.eggpedia.ui.details.EggDetailsViewModel
+import com.jaidensiu.eggpedia.ui.games.game.ImageMatchingGameScreen
 import com.jaidensiu.eggpedia.ui.games.EggQuizGamesScreen
 import com.jaidensiu.eggpedia.ui.games.EggQuizGamesViewModel
+import com.jaidensiu.eggpedia.ui.games.game.CookingStepsOrderingGameScreen
+import com.jaidensiu.eggpedia.ui.games.game.MixOfQuestionsGameScreen
 import com.jaidensiu.eggpedia.ui.home.HomeScreen
 import com.jaidensiu.eggpedia.ui.home.HomeViewModel
 import com.jaidensiu.eggpedia.ui.list.EggsListScreen
@@ -91,9 +94,27 @@ fun App() {
                     EggQuizGamesScreen(
                         viewModel = viewModel,
                         onClickBack = { navController.navigateUp() },
-                        playCookingStepsOrdering = {},
-                        playEggImageMatching = {},
-                        playMixOfQuestions = {}
+                        playEggImageMatching = { navController.navigate(route = Route.ImageMatchingGame) },
+                        playCookingStepsOrdering = { navController.navigate(route = Route.CookingStepsOrderingGame) },
+                        playMixOfQuestions = { navController.navigate(route = Route.MixOfQuestionsGame) }
+                    )
+                }
+                composable<Route.ImageMatchingGame> {
+                    ImageMatchingGameScreen(
+                        onDismissGame = { navController.navigateUp() },
+                        onPlay = {}
+                    )
+                }
+                composable<Route.CookingStepsOrderingGame> {
+                    CookingStepsOrderingGameScreen(
+                        onDismissGame = { navController.navigateUp() },
+                        onPlay = {}
+                    )
+                }
+                composable<Route.MixOfQuestionsGame> {
+                    MixOfQuestionsGameScreen(
+                        onDismissGame = { navController.navigateUp() },
+                        onPlay = {}
                     )
                 }
             }
