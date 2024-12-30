@@ -25,13 +25,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.jaidensiu.eggpedia.ui.shared.isAndroid
 import com.plusmobileapps.konnectivity.Konnectivity
+import eggpedia.composeapp.generated.resources.Res
+import eggpedia.composeapp.generated.resources.back
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun EggQuizGamesScreen(
     viewModel: EggQuizGamesViewModel = koinViewModel(),
     onClickBack: () -> Unit,
-    playEggImageMatching: () -> Unit,
+    playImageMatching: () -> Unit,
     playCookingStepsOrdering: () -> Unit,
     playMixOfQuestions: () -> Unit
 ) {
@@ -63,7 +66,7 @@ fun EggQuizGamesScreen(
             border = BorderStroke(width = 1.dp, color = MaterialTheme.colors.primary)
         ) {
             Text(
-                text = "Back",
+                text = stringResource(Res.string.back),
                 color = MaterialTheme.colors.primary
             )
         }
@@ -91,11 +94,11 @@ fun EggQuizGamesScreen(
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 Button(
-                    onClick = playEggImageMatching,
+                    onClick = playImageMatching,
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
                 ) {
                     Text(
-                        text = "Egg image matching",
+                        text = "Image matching",
                         color = MaterialTheme.colors.onPrimary
                     )
                 }

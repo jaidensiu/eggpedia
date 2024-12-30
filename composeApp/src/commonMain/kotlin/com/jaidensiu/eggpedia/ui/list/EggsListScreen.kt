@@ -36,8 +36,11 @@ import com.jaidensiu.eggpedia.app.Route
 import com.jaidensiu.eggpedia.data.Egg
 import com.jaidensiu.eggpedia.ui.shared.isAndroid
 import com.plusmobileapps.konnectivity.Konnectivity
+import eggpedia.composeapp.generated.resources.Res
+import eggpedia.composeapp.generated.resources.back
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -99,7 +102,7 @@ fun EggsListScreen(
                     border = BorderStroke(width = 1.dp, color = MaterialTheme.colors.primary)
                 ) {
                     Text(
-                        text = "Back",
+                        text = stringResource(Res.string.back),
                         color = MaterialTheme.colors.primary
                     )
                 }

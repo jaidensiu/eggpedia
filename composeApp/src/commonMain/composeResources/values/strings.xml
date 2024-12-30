@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <!-- Details -->
+    <!-- Games -->
+    <!-- Home -->
+    <string name="explore_egg_recipes">Explore egg recipes</string>
+    <string name="good_time_of_day">Good %1$s</string>
+    <string name="play_egg_quiz_games">Play egg quiz games</string>
+    <string name="view_saved_egg_recipes">View saved egg recipes</string>
+    <string name="welcome_to_eggpedia">Welcome to Eggpedia</string>
+    <!-- List -->
+    <!-- Shared -->
+    <string name="back">Back</string>
+</resources>

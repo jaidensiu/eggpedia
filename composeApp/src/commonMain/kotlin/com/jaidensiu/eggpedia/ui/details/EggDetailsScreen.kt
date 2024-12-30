@@ -32,6 +32,9 @@ import coil3.compose.rememberAsyncImagePainter
 import com.jaidensiu.eggpedia.data.Egg
 import com.jaidensiu.eggpedia.ui.shared.CustomDialog
 import com.jaidensiu.eggpedia.ui.shared.isAndroid
+import eggpedia.composeapp.generated.resources.Res
+import eggpedia.composeapp.generated.resources.back
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -65,7 +68,7 @@ fun EggDetailsScreen(
                 border = BorderStroke(width = 1.dp, color = MaterialTheme.colors.primary)
             ) {
                 Text(
-                    text = "Back",
+                    text = stringResource(Res.string.back),
                     color = MaterialTheme.colors.primary
                 )
             }
@@ -128,6 +131,7 @@ fun EggDetailsScreen(
             onConfirm = {
                 viewModel.deleteEggFromLocal(egg.id.toString())
                 showDialog = false
+                onClickBack()
             },
             onDismiss = { showDialog = false }
         )

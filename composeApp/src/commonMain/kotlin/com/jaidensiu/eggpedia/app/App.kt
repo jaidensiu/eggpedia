@@ -94,7 +94,7 @@ fun App() {
                     EggQuizGamesScreen(
                         viewModel = viewModel,
                         onClickBack = { navController.navigateUp() },
-                        playEggImageMatching = { navController.navigate(route = Route.ImageMatchingGame) },
+                        playImageMatching = { navController.navigate(route = Route.ImageMatchingGame) },
                         playCookingStepsOrdering = { navController.navigate(route = Route.CookingStepsOrderingGame) },
                         playMixOfQuestions = { navController.navigate(route = Route.MixOfQuestionsGame) }
                     )

@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -21,7 +20,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import eggpedia.composeapp.generated.resources.Res
 import eggpedia.composeapp.generated.resources.egg_icon
+import eggpedia.composeapp.generated.resources.explore_egg_recipes
+import eggpedia.composeapp.generated.resources.good_time_of_day
+import eggpedia.composeapp.generated.resources.play_egg_quiz_games
+import eggpedia.composeapp.generated.resources.view_saved_egg_recipes
+import eggpedia.composeapp.generated.resources.welcome_to_eggpedia
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -47,11 +52,11 @@ fun HomeScreen(
             modifier = Modifier.fillMaxWidth(fraction = 0.5f)
         )
         Text(
-            text = "Good ${state.value.timeOfDay}",
+            text = stringResource(Res.string.good_time_of_day, state.value.timeOfDay),
             color = MaterialTheme.colors.onBackground
         )
         Text(
-            text = "Welcome to Eggpedia",
+            text = stringResource(Res.string.welcome_to_eggpedia),
             color = MaterialTheme.colors.onBackground
         )
         Spacer(modifier = Modifier.height(24.dp))
@@ -60,7 +65,7 @@ fun HomeScreen(
             colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
         ) {
             Text(
-                text = "Explore egg recipes",
+                text = stringResource(Res.string.explore_egg_recipes),
                 color = MaterialTheme.colors.onPrimary
             )
         }
@@ -70,7 +75,7 @@ fun HomeScreen(
             colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
         ) {
             Text(
-                text = "View saved egg recipes",
+                text = stringResource(Res.string.view_saved_egg_recipes),
                 color = MaterialTheme.colors.onPrimary
             )
         }
@@ -80,7 +85,7 @@ fun HomeScreen(
             colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
         ) {
             Text(
-                text = "Play egg quiz games",
+                text = stringResource(Res.string.play_egg_quiz_games),
                 color = MaterialTheme.colors.onPrimary
             )
         }

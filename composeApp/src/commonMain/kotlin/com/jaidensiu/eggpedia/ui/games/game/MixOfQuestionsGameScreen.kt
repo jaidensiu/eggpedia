@@ -36,5 +36,5 @@ fun MixOfQuestionsGameScreen(
         )
     }
 
-    // TODO: should be egg recipe name at top with 4 egg images like the Kahoot layout
+    // TODO
 }
