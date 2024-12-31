@@ -12,7 +12,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.jaidensiu.eggpedia.ui.details.EggDetailsScreen
 import com.jaidensiu.eggpedia.ui.details.EggDetailsViewModel
-import com.jaidensiu.eggpedia.ui.games.game.ImageMatchingGameScreen
+import com.jaidensiu.eggpedia.ui.games.image.ImageMatchingGameScreen
 import com.jaidensiu.eggpedia.ui.games.EggQuizGamesScreen
 import com.jaidensiu.eggpedia.ui.games.EggQuizGamesViewModel
 import com.jaidensiu.eggpedia.ui.games.game.CookingStepsOrderingGameScreen

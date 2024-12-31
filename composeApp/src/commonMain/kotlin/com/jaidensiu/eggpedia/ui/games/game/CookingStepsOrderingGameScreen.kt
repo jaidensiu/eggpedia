@@ -37,4 +37,5 @@ fun CookingStepsOrderingGameScreen(
     }
 
     // TODO: should be egg recipe name at top with tile ordering where LS is step number (does not move), and RS is step description
+    // TODO: will have to implement drag and drop mechanism for RS
 }

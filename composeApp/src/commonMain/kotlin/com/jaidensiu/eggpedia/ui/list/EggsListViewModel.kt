@@ -22,9 +22,9 @@ class EggsListViewModel(private val repository: EggsRepository) : ViewModel() {
                     val eggs = repository.getRemoteEggs()
                     _state.value = EggsListScreenState(eggs = eggs)
                 } else if (route == Route.SavedEggsList) {
-                    repository.getLocalEggs().onEach { localEggs ->
-                        _state.value = EggsListScreenState(eggs = localEggs)
-                    }.collect()
+                    repository.getLocalEggs()
+                        .onEach { eggs -> _state.value = EggsListScreenState(eggs = eggs) }
+                        .collect()
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
