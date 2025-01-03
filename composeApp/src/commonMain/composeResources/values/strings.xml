@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <!-- Details -->
-    <!-- Games -->
     <!-- Home -->
     <string name="explore_egg_recipes">Explore egg recipes</string>
     <string name="good_time_of_day">Good %1$s</string>
-    <string name="play_egg_quiz_games">Play egg quiz games</string>
+    <string name="play_minigames">Play minigames</string>
     <string name="view_saved_egg_recipes">View saved egg recipes</string>
     <string name="welcome_to_eggpedia">Welcome to Eggpedia</string>
     <!-- List -->
+    <!-- Minigames -->
     <!-- Shared -->
     <string name="back">Back</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 </resources>

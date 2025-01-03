@@ -9,8 +9,8 @@ import com.jaidensiu.eggpedia.data.remote.HttpClientInstance
 import com.jaidensiu.eggpedia.data.remote.IRemoteEggsApi
 import com.jaidensiu.eggpedia.data.remote.RemoteEggsApi
 import com.jaidensiu.eggpedia.ui.details.EggDetailsViewModel
-import com.jaidensiu.eggpedia.ui.games.EggQuizGamesViewModel
-import com.jaidensiu.eggpedia.ui.games.image.ImageMatchingGameViewModel
+import com.jaidensiu.eggpedia.ui.minigames.MinigamesViewModel
+import com.jaidensiu.eggpedia.ui.minigames.speed.SpeedMatchingMinigameViewModel
 import com.jaidensiu.eggpedia.ui.home.HomeViewModel
 import com.jaidensiu.eggpedia.ui.list.EggsListViewModel
 import com.jaidensiu.eggpedia.ui.shared.SelectedEggViewModel
@@ -32,6 +32,6 @@ val sharedModule = module {
     viewModelOf(::HomeViewModel)
     viewModelOf(::EggDetailsViewModel)
     viewModelOf(::SelectedEggViewModel)
-    viewModelOf(::EggQuizGamesViewModel)
-    viewModelOf(::ImageMatchingGameViewModel)
+    viewModelOf(::MinigamesViewModel)
+    viewModelOf(::SpeedMatchingMinigameViewModel)
 }

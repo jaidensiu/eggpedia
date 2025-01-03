@@ -1,9 +1,9 @@
-package com.jaidensiu.eggpedia.ui.games.image
+package com.jaidensiu.eggpedia.ui.minigames.speed
 
 import kotlinx.datetime.Instant
 
-data class ImageMatchingGameScreenState(
-    val eggNameToImage: Map<String, String> = emptyMap(),
+data class SpeedMatchingMinigameScreenState(
+    val eggs: Map<String, String> = emptyMap(),
     val randomEggs: List<String> = emptyList(),
     val currentEgg: String? = null,
     val shuffledImages: List<String?> = emptyList(),
@@ -11,4 +11,3 @@ data class ImageMatchingGameScreenState(
     val startTime: Instant? = null,
     val totalTime: Long? = null
 )
-

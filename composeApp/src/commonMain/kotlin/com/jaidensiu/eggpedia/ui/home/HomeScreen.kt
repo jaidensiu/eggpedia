@@ -22,7 +22,7 @@ import eggpedia.composeapp.generated.resources.Res
 import eggpedia.composeapp.generated.resources.egg_icon
 import eggpedia.composeapp.generated.resources.explore_egg_recipes
 import eggpedia.composeapp.generated.resources.good_time_of_day
-import eggpedia.composeapp.generated.resources.play_egg_quiz_games
+import eggpedia.composeapp.generated.resources.play_minigames
 import eggpedia.composeapp.generated.resources.view_saved_egg_recipes
 import eggpedia.composeapp.generated.resources.welcome_to_eggpedia
 import org.jetbrains.compose.resources.painterResource
@@ -85,7 +85,7 @@ fun HomeScreen(
             colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
         ) {
             Text(
-                text = stringResource(Res.string.play_egg_quiz_games),
+                text = stringResource(Res.string.play_minigames),
                 color = MaterialTheme.colors.onPrimary
             )
         }

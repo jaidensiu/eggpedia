@@ -30,11 +30,11 @@ fun CustomDialog(
     modifier: Modifier = Modifier,
     title: String,
     message: String? = null,
-    dismissText: String,
     confirmText: String,
-    onDismissRequest: () -> Unit = {},
+    dismissText: String? = null,
     onConfirm: () -> Unit,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit = {},
+    onDismissRequest: () -> Unit = {}
 ) {
     Box(
         modifier = Modifier
@@ -70,10 +70,12 @@ fun CustomDialog(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.End
                 ) {
-                    TextButton(onClick = onDismiss) {
-                        Text(text = dismissText)
+                    dismissText?.let {
+                        TextButton(onClick = onDismiss) {
+                            Text(text = it)
+                        }
+                        Spacer(modifier = Modifier.width(8.dp))
                     }
-                    Spacer(modifier = Modifier.width(8.dp))
                     TextButton(onClick = onConfirm) {
                         Text(text = confirmText)
                     }

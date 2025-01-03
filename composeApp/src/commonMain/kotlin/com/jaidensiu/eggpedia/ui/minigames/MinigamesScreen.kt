@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.ui.games
+package com.jaidensiu.eggpedia.ui.minigames
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -31,12 +31,11 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun EggQuizGamesScreen(
-    viewModel: EggQuizGamesViewModel = koinViewModel(),
+fun MinigamesScreen(
+    viewModel: MinigamesViewModel = koinViewModel(),
     onClickBack: () -> Unit,
-    playImageMatching: () -> Unit,
-    playCookingStepsOrdering: () -> Unit,
-    playMixOfQuestions: () -> Unit
+    playSpeedMatchingMinigame: () -> Unit,
+    playMemoryMatchingMinigame: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
     val konnectivity = remember { Konnectivity() }
@@ -44,10 +43,6 @@ fun EggQuizGamesScreen(
 
     LaunchedEffect(isConnected) {
         viewModel.observeInternetConnection(isConnected = isConnected)
-    }
-
-    LaunchedEffect(Unit) {
-        viewModel.getEggs()
     }
 
     Box(
@@ -89,36 +84,26 @@ fun EggQuizGamesScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Which quiz game would you like to play?",
+                    text = "Which minigame would you like to play?",
                     color = MaterialTheme.colors.onBackground
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 Button(
-                    onClick = playImageMatching,
+                    onClick = playSpeedMatchingMinigame,
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
                 ) {
                     Text(
-                        text = "Image matching",
+                        text = "Speed matching",
                         color = MaterialTheme.colors.onPrimary
                     )
                 }
                 Spacer(modifier = Modifier.height(12.dp))
                 Button(
-                    onClick = playCookingStepsOrdering,
+                    onClick = playMemoryMatchingMinigame,
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
                 ) {
                     Text(
-                        text = "Cooking steps ordering",
-                        color = MaterialTheme.colors.onPrimary
-                    )
-                }
-                Spacer(modifier = Modifier.height(12.dp))
-                Button(
-                    onClick = playMixOfQuestions,
-                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
-                ) {
-                    Text(
-                        text = "Mix of questions",
+                        text = "Memory matching",
                         color = MaterialTheme.colors.onPrimary
                     )
                 }

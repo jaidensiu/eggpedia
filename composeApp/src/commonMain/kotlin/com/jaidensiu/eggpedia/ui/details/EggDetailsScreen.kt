@@ -34,6 +34,8 @@ import com.jaidensiu.eggpedia.ui.shared.CustomDialog
 import com.jaidensiu.eggpedia.ui.shared.isAndroid
 import eggpedia.composeapp.generated.resources.Res
 import eggpedia.composeapp.generated.resources.back
+import eggpedia.composeapp.generated.resources.no
+import eggpedia.composeapp.generated.resources.yes
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -125,15 +127,15 @@ fun EggDetailsScreen(
         CustomDialog(
             modifier = Modifier.padding(horizontal = 48.dp),
             title = "Are you sure you want to remove this egg recipe?",
-            dismissText = "No",
-            confirmText = "Yes",
-            onDismissRequest = { showDialog = false },
+            confirmText = stringResource(Res.string.yes),
+            dismissText = stringResource(Res.string.no),
             onConfirm = {
                 viewModel.deleteEggFromLocal(egg.id.toString())
                 showDialog = false
                 onClickBack()
             },
-            onDismiss = { showDialog = false }
+            onDismiss = { showDialog = false },
+            onDismissRequest = { showDialog = false }
         )
     }
 }

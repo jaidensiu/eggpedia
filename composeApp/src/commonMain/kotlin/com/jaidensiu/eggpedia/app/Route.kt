@@ -19,14 +19,11 @@ sealed interface Route {
     data class EggDetails(val id: String) : Route
 
     @Serializable
-    data object EggQuizGames : Route
+    data object EggMinigames : Route
 
     @Serializable
-    data object ImageMatchingGame : Route
+    data object MatchingMinigame : Route
 
     @Serializable
-    data object CookingStepsOrderingGame : Route
-
-    @Serializable
-    data object MixOfQuestionsGame : Route
+    data object MemoryMatchingMinigame : Route
 }

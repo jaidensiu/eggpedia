@@ -12,15 +12,15 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.jaidensiu.eggpedia.ui.details.EggDetailsScreen
 import com.jaidensiu.eggpedia.ui.details.EggDetailsViewModel
-import com.jaidensiu.eggpedia.ui.games.image.ImageMatchingGameScreen
-import com.jaidensiu.eggpedia.ui.games.EggQuizGamesScreen
-import com.jaidensiu.eggpedia.ui.games.EggQuizGamesViewModel
-import com.jaidensiu.eggpedia.ui.games.game.CookingStepsOrderingGameScreen
-import com.jaidensiu.eggpedia.ui.games.game.MixOfQuestionsGameScreen
+import com.jaidensiu.eggpedia.ui.minigames.speed.SpeedMatchingMinigameScreen
+import com.jaidensiu.eggpedia.ui.minigames.MinigamesScreen
+import com.jaidensiu.eggpedia.ui.minigames.MinigamesViewModel
 import com.jaidensiu.eggpedia.ui.home.HomeScreen
 import com.jaidensiu.eggpedia.ui.home.HomeViewModel
 import com.jaidensiu.eggpedia.ui.list.EggsListScreen
 import com.jaidensiu.eggpedia.ui.list.EggsListViewModel
+import com.jaidensiu.eggpedia.ui.minigames.memory.MemoryMatchingMinigameScreen
+import com.jaidensiu.eggpedia.ui.minigames.speed.SpeedMatchingMinigameViewModel
 import com.jaidensiu.eggpedia.ui.shared.SelectedEggViewModel
 import com.jaidensiu.eggpedia.ui.theme.EggpediaTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -44,7 +44,7 @@ fun App() {
                         viewModel = viewModel,
                         onExploreEggRecipes = { navController.navigate(route = Route.EggsList) },
                         onViewSavedEggRecipes = { navController.navigate(route = Route.SavedEggsList) },
-                        onPlayEggQuizGames = { navController.navigate(route = Route.EggQuizGames) }
+                        onPlayEggQuizGames = { navController.navigate(route = Route.EggMinigames) }
                     )
                 }
                 composable<Route.EggsList> { navBackStackEntry ->
@@ -88,34 +88,25 @@ fun App() {
                         )
                     }
                 }
-                composable<Route.EggQuizGames> {
-                    val viewModel = koinViewModel<EggQuizGamesViewModel>()
+                composable<Route.EggMinigames> {
+                    val viewModel = koinViewModel<MinigamesViewModel>()
 
-                    EggQuizGamesScreen(
+                    MinigamesScreen(
                         viewModel = viewModel,
                         onClickBack = { navController.navigateUp() },
-                        playImageMatching = { navController.navigate(route = Route.ImageMatchingGame) },
-                        playCookingStepsOrdering = { navController.navigate(route = Route.CookingStepsOrderingGame) },
-                        playMixOfQuestions = { navController.navigate(route = Route.MixOfQuestionsGame) }
+                        playSpeedMatchingMinigame = { navController.navigate(route = Route.MatchingMinigame) },
+                        playMemoryMatchingMinigame = { navController.navigate(route = Route.MemoryMatchingMinigame) }
                     )
                 }
-                composable<Route.ImageMatchingGame> {
-                    ImageMatchingGameScreen(
-                        onDismissGame = { navController.navigateUp() },
-                        onPlay = {}
+                composable<Route.MatchingMinigame> {
+                    val viewModel = koinViewModel<SpeedMatchingMinigameViewModel>()
+                    SpeedMatchingMinigameScreen(
+                        viewModel = viewModel,
+                        onDismissGame = { navController.navigateUp() }
                     )
                 }
-                composable<Route.CookingStepsOrderingGame> {
-                    CookingStepsOrderingGameScreen(
-                        onDismissGame = { navController.navigateUp() },
-                        onPlay = {}
-                    )
-                }
-                composable<Route.MixOfQuestionsGame> {
-                    MixOfQuestionsGameScreen(
-                        onDismissGame = { navController.navigateUp() },
-                        onPlay = {}
-                    )
+                composable<Route.MemoryMatchingMinigame> {
+                    MemoryMatchingMinigameScreen()
                 }
             }
         }

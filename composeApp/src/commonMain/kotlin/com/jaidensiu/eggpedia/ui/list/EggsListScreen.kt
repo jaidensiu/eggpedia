@@ -120,12 +120,44 @@ fun EggsListScreen(
                 if (!isConnected && route == Route.EggsList) {
                     item {
                         Column(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 18.dp),
                             verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Text(
                                 text = "There is no internet connection",
+                                color = MaterialTheme.colors.onBackground
+                            )
+                        }
+                    }
+                } else if (state.value.eggs.isEmpty() && route == Route.SavedEggsList) {
+                    item {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 18.dp),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                text = "You have no saved egg recipes",
+                                color = MaterialTheme.colors.onBackground
+                            )
+                        }
+                    }
+                } else if (filteredEggs.isEmpty() && debouncedQuery.isNotBlank()) {
+                    item {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 18.dp),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                text = "There are no egg recipes for your search",
                                 color = MaterialTheme.colors.onBackground
                             )
                         }
@@ -140,32 +172,6 @@ fun EggsListScreen(
                                 onSelectEgg(egg)
                             }
                         )
-                    }
-                } else if (filteredEggs.isEmpty() && route == Route.SavedEggsList) {
-                    item {
-                        Column(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.Center,
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            Text(
-                                text = "There are no saved egg recipes",
-                                color = MaterialTheme.colors.onBackground
-                            )
-                        }
-                    }
-                } else if (filteredEggs.isEmpty() && debouncedQuery.isNotBlank()) {
-                    item {
-                        Column(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.Center,
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            Text(
-                                text = "There are no egg recipes for your search",
-                                color = MaterialTheme.colors.onBackground
-                            )
-                        }
                     }
                 }
             }
