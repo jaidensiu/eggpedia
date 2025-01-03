@@ -61,6 +61,7 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.bundles.coil)
             implementation(libs.konnectivity)
+            implementation(libs.kotlinx.datetime)
         }
 
         nativeMain.dependencies {
