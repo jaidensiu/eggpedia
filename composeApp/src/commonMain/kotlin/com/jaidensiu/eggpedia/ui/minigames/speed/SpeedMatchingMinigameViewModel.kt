@@ -2,21 +2,27 @@ package com.jaidensiu.eggpedia.ui.minigames.speed
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jaidensiu.eggpedia.data.EggsRepository
+import com.jaidensiu.eggpedia.app.Route
+import com.jaidensiu.eggpedia.data.repositories.egg.EggsRepository
+import com.jaidensiu.eggpedia.data.repositories.minigame.MinigamesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 
-class SpeedMatchingMinigameViewModel(private val repository: EggsRepository) : ViewModel() {
+// TODO: to implement or not to implement domain layer (since there are 2 repository constructor args)
+class SpeedMatchingMinigameViewModel(
+    private val eggsRepository: EggsRepository,
+    private val minigamesRepository: MinigamesRepository
+) : ViewModel() {
     private val _state = MutableStateFlow(SpeedMatchingMinigameScreenState())
     val state = _state.asStateFlow()
 
     fun initEggs() {
         viewModelScope.launch {
             try {
-                val eggs = repository.getRemoteEggs().associate { it.name to it.imageUrl }
+                val eggs = eggsRepository.getRemoteEggs().associate { it.name to it.imageUrl }
                 val randomEggs = eggs.keys.shuffled().take(NUMBER_OF_EGGS)
                 _state.update {
                     it.copy(
@@ -36,24 +42,21 @@ class SpeedMatchingMinigameViewModel(private val repository: EggsRepository) : V
         _state.update { it.copy(startTime = Clock.System.now()) }
     }
 
-    fun onPlayAgain() {
+    fun onResetMinigameState() {
         _state.value = SpeedMatchingMinigameScreenState()
-        initEggs()
-        onPlay()
     }
 
-    fun isBestTime(timeMillis: Long?): Boolean {
-        if (timeMillis == null) {
-            return false
+    suspend fun saveTime(time: Long?) {
+        time?.let {
+            minigamesRepository.saveMinigameBestTime(
+                time = it,
+                route = Route.SpeedMatchingMinigame
+            )
         }
-        // TODO
-        val prevTimeMillis = 10000L
-        return timeMillis < prevTimeMillis
     }
 
-    fun getBestTime(): Long {
-        // TODO
-        return 0L
+    suspend fun getBestTime(): Long? {
+        return minigamesRepository.getSpeedMatchingBestTime()
     }
 
     fun checkImageClicked(imageUrl: String?) {

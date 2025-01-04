@@ -1,28 +1,29 @@
-package com.jaidensiu.eggpedia.data
+package com.jaidensiu.eggpedia.data.repositories.egg
 
 import androidx.sqlite.SQLiteException
-import com.jaidensiu.eggpedia.data.EggMappers.toEgg
-import com.jaidensiu.eggpedia.data.EggMappers.toEggEntity
-import com.jaidensiu.eggpedia.data.local.LocalEggDao
-import com.jaidensiu.eggpedia.data.remote.RemoteEggsApi
+import com.jaidensiu.eggpedia.data.models.egg.EggMappers.toEgg
+import com.jaidensiu.eggpedia.data.models.egg.EggMappers.toEggEntity
+import com.jaidensiu.eggpedia.data.local.egg.EggDao
+import com.jaidensiu.eggpedia.data.models.egg.Egg
+import com.jaidensiu.eggpedia.data.remote.egg.RemoteEggsApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class EggsRepository(
     private val remoteEggsApi: RemoteEggsApi,
-    private val localEggDao: LocalEggDao
+    private val eggDao: EggDao
 ) : IEggsRepository {
     override suspend fun getRemoteEggs(): List<Egg> {
         return remoteEggsApi.getEggs().map { eggDto -> eggDto.toEgg() }
     }
 
     override suspend fun getLocalEggs(): Flow<List<Egg>> {
-        return localEggDao.getEggs().map { eggEntities -> eggEntities.map { it.toEgg() } }
+        return eggDao.getEggs().map { eggEntities -> eggEntities.map { it.toEgg() } }
     }
 
     override suspend fun saveEggToLocal(egg: Egg) {
         try {
-            localEggDao.upsert(eggEntity = egg.toEggEntity())
+            eggDao.upsert(eggEntity = egg.toEggEntity())
         } catch (e: SQLiteException) {
             e.printStackTrace()
         }
@@ -30,13 +31,13 @@ class EggsRepository(
 
     override suspend fun removeEggFromLocal(id: String) {
         try {
-            localEggDao.deleteSavedEgg(id)
+            eggDao.deleteSavedEgg(id)
         } catch (e: SQLiteException) {
             e.printStackTrace()
         }
     }
 
     override fun isEggSaved(id: String): Flow<Boolean> {
-        return localEggDao.getEggs().map { eggEntities -> eggEntities.any { it.id == id } }
+        return eggDao.getEggs().map { eggEntities -> eggEntities.any { it.id == id } }
     }
 }

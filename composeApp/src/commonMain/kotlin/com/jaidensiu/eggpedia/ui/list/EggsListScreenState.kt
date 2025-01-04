@@ -1,6 +1,6 @@
 package com.jaidensiu.eggpedia.ui.list
 
-import com.jaidensiu.eggpedia.data.Egg
+import com.jaidensiu.eggpedia.data.models.egg.Egg
 
 data class EggsListScreenState(
     val eggs: List<Egg> = emptyList(),

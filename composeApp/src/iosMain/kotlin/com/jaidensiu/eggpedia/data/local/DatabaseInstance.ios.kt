@@ -10,10 +10,10 @@ import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
 
 actual class DatabaseInstance {
-    actual fun create(): RoomDatabase.Builder<LocalEggsDatabase> {
-        val dbFile = documentDirectory() + "/${LocalEggsDatabase.DB_NAME}"
+    actual fun create(): RoomDatabase.Builder<LocalDatabase> {
+        val dbFile = documentDirectory() + "/${LocalDatabase.DB_NAME}"
 
-        return Room.databaseBuilder<LocalEggsDatabase>(name = dbFile)
+        return Room.databaseBuilder<LocalDatabase>(name = dbFile)
     }
 
     private fun documentDirectory(): String {

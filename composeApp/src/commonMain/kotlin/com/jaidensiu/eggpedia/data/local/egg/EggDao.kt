@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.data.local
+package com.jaidensiu.eggpedia.data.local.egg
 
 import androidx.room.Dao
 import androidx.room.Query
@@ -6,7 +6,7 @@ import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface LocalEggDao {
+interface EggDao {
     @Upsert
     suspend fun upsert(eggEntity: EggEntity)
 

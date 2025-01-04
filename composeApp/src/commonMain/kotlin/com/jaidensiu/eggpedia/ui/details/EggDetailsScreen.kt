@@ -29,7 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.rememberAsyncImagePainter
-import com.jaidensiu.eggpedia.data.Egg
+import com.jaidensiu.eggpedia.data.models.egg.Egg
 import com.jaidensiu.eggpedia.ui.shared.CustomDialog
 import com.jaidensiu.eggpedia.ui.shared.isAndroid
 import eggpedia.composeapp.generated.resources.Res

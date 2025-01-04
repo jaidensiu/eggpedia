@@ -15,7 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
-import com.jaidensiu.eggpedia.data.Egg
+import com.jaidensiu.eggpedia.data.models.egg.Egg
 
 @Composable
 fun EggListItem(

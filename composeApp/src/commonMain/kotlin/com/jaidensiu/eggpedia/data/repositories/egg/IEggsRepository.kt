@@ -1,5 +1,6 @@
-package com.jaidensiu.eggpedia.data
+package com.jaidensiu.eggpedia.data.repositories.egg
 
+import com.jaidensiu.eggpedia.data.models.egg.Egg
 import kotlinx.coroutines.flow.Flow
 
 interface IEggsRepository {

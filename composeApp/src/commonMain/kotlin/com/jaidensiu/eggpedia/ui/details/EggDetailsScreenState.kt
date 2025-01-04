@@ -1,6 +1,6 @@
 package com.jaidensiu.eggpedia.ui.details
 
-import com.jaidensiu.eggpedia.data.Egg
+import com.jaidensiu.eggpedia.data.models.egg.Egg
 
 data class EggDetailsScreenState(
     val egg: Egg? = null,

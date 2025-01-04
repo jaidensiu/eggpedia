@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.data.remote
+package com.jaidensiu.eggpedia.data.remote.egg
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

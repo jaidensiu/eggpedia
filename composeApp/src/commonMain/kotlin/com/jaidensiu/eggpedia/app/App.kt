@@ -94,11 +94,11 @@ fun App() {
                     MinigamesScreen(
                         viewModel = viewModel,
                         onClickBack = { navController.navigateUp() },
-                        playSpeedMatchingMinigame = { navController.navigate(route = Route.MatchingMinigame) },
+                        playSpeedMatchingMinigame = { navController.navigate(route = Route.SpeedMatchingMinigame) },
                         playMemoryMatchingMinigame = { navController.navigate(route = Route.MemoryMatchingMinigame) }
                     )
                 }
-                composable<Route.MatchingMinigame> {
+                composable<Route.SpeedMatchingMinigame> {
                     val viewModel = koinViewModel<SpeedMatchingMinigameViewModel>()
                     SpeedMatchingMinigameScreen(
                         viewModel = viewModel,

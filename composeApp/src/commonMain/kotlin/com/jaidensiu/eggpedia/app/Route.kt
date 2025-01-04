@@ -22,7 +22,7 @@ sealed interface Route {
     data object EggMinigames : Route
 
     @Serializable
-    data object MatchingMinigame : Route
+    data object SpeedMatchingMinigame : Route
 
     @Serializable
     data object MemoryMatchingMinigame : Route
