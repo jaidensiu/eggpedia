@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 
-// TODO: to implement or not to implement domain layer (since there are 2 repository constructor args)
 class SpeedMatchingMinigameViewModel(
     private val eggsRepository: EggsRepository,
     private val minigamesRepository: MinigamesRepository
