@@ -15,6 +15,7 @@ import com.jaidensiu.eggpedia.ui.list.EggsListViewModel
 import com.jaidensiu.eggpedia.ui.minigames.MinigamesScreen
 import com.jaidensiu.eggpedia.ui.minigames.MinigamesViewModel
 import com.jaidensiu.eggpedia.ui.minigames.memory.MemoryMatchingMinigameScreen
+import com.jaidensiu.eggpedia.ui.minigames.memory.MemoryMatchingMinigameViewModel
 import com.jaidensiu.eggpedia.ui.minigames.speed.SpeedMatchingMinigameScreen
 import com.jaidensiu.eggpedia.ui.minigames.speed.SpeedMatchingMinigameViewModel
 import com.jaidensiu.eggpedia.ui.shared.SelectedEggViewModel
@@ -109,7 +110,12 @@ fun App() {
                 }
 
                 composable<Route.MemoryMatchingMinigame> {
-                    MemoryMatchingMinigameScreen()
+                    val viewModel = koinViewModel<MemoryMatchingMinigameViewModel>()
+
+                    MemoryMatchingMinigameScreen(
+                        viewModel = viewModel,
+                        onDismissGame = { navController.navigateUp() }
+                    )
                 }
             }
         }
