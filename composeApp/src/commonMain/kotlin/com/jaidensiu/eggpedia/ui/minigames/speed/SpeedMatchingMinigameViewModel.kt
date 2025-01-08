@@ -23,11 +23,12 @@ class SpeedMatchingMinigameViewModel(
             try {
                 val eggs = eggsRepository.getRemoteEggs().associate { it.name to it.imageUrl }
                 val randomEggs = eggs.keys.shuffled().take(NUMBER_OF_EGGS)
+                val currentEgg = randomEggs.firstOrNull()
                 _state.update {
                     it.copy(
                         eggs = eggs,
                         randomEggs = randomEggs,
-                        currentEgg = randomEggs.firstOrNull()
+                        currentEgg = currentEgg
                     )
                 }
                 shuffleImages()
@@ -91,8 +92,8 @@ class SpeedMatchingMinigameViewModel(
     }
 
     companion object {
-        const val NUMBER_OF_EGGS = 5
-        const val GRID_SIZE = 2
+        const val NUMBER_OF_EGGS = 6
+        const val GRID_COLUMNS = 2
         const val GRID_ITEMS_SIZE = 4
     }
 }

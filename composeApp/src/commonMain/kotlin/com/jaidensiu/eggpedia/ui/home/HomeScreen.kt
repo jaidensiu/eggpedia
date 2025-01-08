@@ -62,6 +62,7 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(24.dp))
         Button(
             onClick = { onExploreEggRecipes() },
+            modifier = Modifier.fillMaxWidth(fraction = 0.75f),
             colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
         ) {
             Text(
@@ -72,6 +73,7 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(12.dp))
         Button(
             onClick = { onViewSavedEggRecipes() },
+            modifier = Modifier.fillMaxWidth(fraction = 0.75f),
             colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
         ) {
             Text(
@@ -82,6 +84,7 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(12.dp))
         Button(
             onClick = { onPlayEggQuizGames() },
+            modifier = Modifier.fillMaxWidth(fraction = 0.75f),
             colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
         ) {
             Text(

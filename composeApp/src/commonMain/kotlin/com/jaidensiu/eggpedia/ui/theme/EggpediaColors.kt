@@ -6,6 +6,9 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
+// TODO: tokenize colors to conform Material Design
+// https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
+
 val LightTextFieldPlaceholder = Color(color = 0xFFB0B0B0)
 val DarkTextFieldPlaceholder = Color(color = 0xFF424242)
 
@@ -14,7 +17,7 @@ fun TextFieldPlaceHolder() = if (isSystemInDarkTheme()) DarkTextFieldPlaceholder
 
 val LightPrimary = Color(color = 0xFFFFC107)
 val LightPrimaryVariant = Color(color = 0xFFFFA000)
-val LightSecondary = Color(color = 0xFFFFEB3B)
+val LightSecondary = Color(color = 0xFFFF9800)
 val LightBackground = Color(color = 0xFFFFF8E1)
 val LightSurface = Color(color = 0xFFFCFBF4)
 val LightOnPrimary = Color(color = 0xFF000000)
@@ -24,7 +27,7 @@ val LightOnSurface = Color(color = 0xFF000000)
 
 val DarkPrimary = Color(color = 0xFFFFC107)
 val DarkPrimaryVariant = Color(color = 0xFFFFA000)
-val DarkSecondary = Color(color = 0xFFFFEB3B)
+val DarkSecondary = Color(color = 0xFFFF9800)
 val DarkBackground = Color(color = 0xFF212121)
 val DarkSurface = Color(color = 0xFF303030)
 val DarkOnPrimary = Color(color = 0xFF000000)

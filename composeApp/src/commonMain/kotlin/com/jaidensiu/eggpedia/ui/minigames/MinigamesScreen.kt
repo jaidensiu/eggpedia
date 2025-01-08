@@ -90,6 +90,7 @@ fun MinigamesScreen(
                 Spacer(modifier = Modifier.height(24.dp))
                 Button(
                     onClick = playSpeedMatchingMinigame,
+                    modifier = Modifier.fillMaxWidth(fraction = 0.75f),
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
                 ) {
                     Text(
@@ -100,6 +101,7 @@ fun MinigamesScreen(
                 Spacer(modifier = Modifier.height(12.dp))
                 Button(
                     onClick = playMemoryMatchingMinigame,
+                    modifier = Modifier.fillMaxWidth(fraction = 0.75f),
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
                 ) {
                     Text(

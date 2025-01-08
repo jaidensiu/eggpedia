@@ -7,9 +7,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -27,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil3.compose.rememberAsyncImagePainter
 import com.jaidensiu.eggpedia.ui.shared.CustomDialog
 import eggpedia.composeapp.generated.resources.Res
@@ -88,14 +91,22 @@ fun SpeedMatchingMinigameScreen(
         ) {
             Text(
                 text = state.currentEgg ?: "",
-                modifier = Modifier.padding(16.dp),
                 color = MaterialTheme.colors.onSurface
             )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = state.errorMessage ?: "Select the correct egg image",
+                color = if (state.errorMessage != null) {
+                    MaterialTheme.colors.error
+                } else {
+                    MaterialTheme.colors.onSurface
+                },
+                fontSize = 14.sp
+            )
+            Spacer(modifier = Modifier.height(24.dp))
             LazyVerticalGrid(
-                columns = GridCells.Fixed(count = SpeedMatchingMinigameViewModel.GRID_SIZE),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
+                columns = GridCells.Fixed(count = SpeedMatchingMinigameViewModel.GRID_COLUMNS),
+                modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -113,15 +124,6 @@ fun SpeedMatchingMinigameScreen(
                     }
                 }
             }
-            Text(
-                text = state.errorMessage ?: "Select the correct egg image",
-                modifier = Modifier.padding(16.dp),
-                color = if (state.errorMessage != null) {
-                    MaterialTheme.colors.error
-                } else {
-                    MaterialTheme.colors.onSurface
-                }
-            )
         }
     }
 

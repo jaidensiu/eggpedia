@@ -30,11 +30,13 @@ fun CustomDialog(
     modifier: Modifier = Modifier,
     title: String,
     message: String? = null,
+    onConfirmEnabled: Boolean = true,
     confirmText: String,
     dismissText: String? = null,
     onConfirm: () -> Unit,
     onDismiss: () -> Unit = {},
-    onDismissRequest: () -> Unit = {}
+    onDismissRequest: () -> Unit = {},
+    content: @Composable () -> Unit = {}
 ) {
     Box(
         modifier = Modifier
@@ -65,7 +67,7 @@ fun CustomDialog(
                         fontSize = 14.sp
                     )
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                content()
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.End
@@ -76,7 +78,10 @@ fun CustomDialog(
                         }
                         Spacer(modifier = Modifier.width(8.dp))
                     }
-                    TextButton(onClick = onConfirm) {
+                    TextButton(
+                        onClick = onConfirm,
+                        enabled = onConfirmEnabled
+                    ) {
                         Text(text = confirmText)
                     }
                 }
