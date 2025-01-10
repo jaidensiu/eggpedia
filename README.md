@@ -1,18 +1,24 @@
 # Eggpedia
 
-A Kotlin Multiplatform Android and iOS mobile app that illustrates different ways you can cook eggs.
+A Kotlin Multiplatform Android and iOS mobile app to explore recipes and play minigames about eggs.
 
 ## Motivation
 
-TODO
+As someone who likes to eat eggs (and write code in Kotlin), I envisioned an Android and iOS app about eggs using Kotlin Multiplatform to combine my unique interests.  
 
 ## Features
 
-- TODO
+- Home screen
+- Egg recipes screen
+- Saved/cached egg recipes screen
+- Egg details screen
+- Egg minigames
+  - An egg name and image matching minigame
+  - An egg memory minigame (in development...)
 
 ## Architecture
 
-TODO
+The architecture mirrors the recommended architectural principles and best practices for building clean, scalable, and maintainable apps on Android.
 
 ## Built with
 
@@ -27,7 +33,7 @@ TODO
 
 ## How to run project
 
-TODO
+These steps assume that your development environment is set up for both Android and iOS on a MacOS-based machine.
 
 ### Android
 
