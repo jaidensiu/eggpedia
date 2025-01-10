@@ -21,6 +21,8 @@ As someone who likes to eat eggs (and write code in Kotlin), I envisioned an And
 
 ## My experience building with Kotlin Multiplatform
 
+TODO
+
 ## Features
 
 - Home screen
@@ -58,13 +60,10 @@ The architecture mirrors the recommended architectural principles and best pract
 
 These steps assume that your development environment is set up for both Android and iOS on a MacOS-based machine. You can also run the Android or iOS app on Android Studio with the run button wherever there is `composeApp` and `iosApp`. 
 
-### Android
-
-- Open the project in Android studio and go through the run configurations
-
-### iOS
-
-- Open the project in Xcode and go through the run configurations
+- Android
+  - Open the project in Android studio and go through the run configurations
+- iOS
+  - Open the project in Xcode and go through the run configurations
 
 # License
 
