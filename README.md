@@ -2,9 +2,24 @@
 
 A Kotlin Multiplatform Android and iOS mobile app to explore recipes and play minigames about eggs.
 
+## Table of contents
+
+- [Motivation](#motivation)
+- [My experience building with Kotlin Multiplatform](#my-experience-building-with-kotlin-multiplatform)
+- [Features](#features)
+- [Architecture](#architecture)
+  - [Modules](#modules)
+- [Built with](#built-with)
+- [How to run project](#how-to-run-project)
+  - [Android](#android)
+  - [iOS](#ios)
+- [License](#license)
+
 ## Motivation
 
-As someone who likes to eat eggs (and write code in Kotlin), I envisioned an Android and iOS app about eggs using Kotlin Multiplatform to combine my unique interests.  
+As someone who likes to eat eggs (and write code in Kotlin), I envisioned an Android and iOS app about eggs using Kotlin Multiplatform to combine my unique interests.
+
+## My experience building with Kotlin Multiplatform
 
 ## Features
 
@@ -20,9 +35,17 @@ As someone who likes to eat eggs (and write code in Kotlin), I envisioned an And
 
 The architecture mirrors the recommended architectural principles and best practices for building clean, scalable, and maintainable apps on Android.
 
+### Modules
+
+- `composeApp`
+  - Contains 
+- `iosApp`
+  - 
+
 ## Built with
 
 - Kotlin
+- Gradle
 - Kotlin Multiplatform
 - Compose Multiplatform
 - Room
@@ -33,12 +56,16 @@ The architecture mirrors the recommended architectural principles and best pract
 
 ## How to run project
 
-These steps assume that your development environment is set up for both Android and iOS on a MacOS-based machine.
+These steps assume that your development environment is set up for both Android and iOS on a MacOS-based machine. You can also run the Android or iOS app on Android Studio with the run button wherever there is `composeApp` and `iosApp`. 
 
 ### Android
 
-TODO
+- Open the project in Android studio and go through the run configurations
 
 ### iOS
+
+- Open the project in Xcode and go through the run configurations
+
+# License
 
 TODO
