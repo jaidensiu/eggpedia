@@ -38,9 +38,9 @@ The architecture mirrors the recommended architectural principles and best pract
 ### Modules
 
 - `composeApp`
-  - Contains 
+  - A Kotlin module that contains the logic shared among the Android and iOS apps
 - `iosApp`
-  - 
+  - An Xcode project that builds into an iOS application that depends on and uses the shared module as an iOS framework
 
 ## Built with
 
