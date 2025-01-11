@@ -1,9 +1,8 @@
 package com.jaidensiu.eggpedia.ui.minigames.memory
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
@@ -55,7 +55,7 @@ fun MemoryMatchingMinigameScreen(
         CustomDialog(
             modifier = Modifier.padding(horizontal = 48.dp),
             title = "Ready to play the memory matching minigame?",
-            message = "Select the correct hidden image that matches the egg image!",
+            message = "Select pairs of hidden images that matches that match each other!",
             confirmText = stringResource(Res.string.yes),
             dismissText = stringResource(Res.string.no),
             onConfirm = {
@@ -142,11 +142,6 @@ fun MemoryMatchingMinigameScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = state.currentEgg ?: "",
-                modifier = Modifier.padding(16.dp),
-                color = MaterialTheme.colors.onSurface
-            )
             LazyVerticalGrid(
                 columns = GridCells.Fixed(count = MemoryMatchingMinigameViewModel.GRID_COLUMNS),
                 modifier = Modifier
@@ -157,16 +152,25 @@ fun MemoryMatchingMinigameScreen(
             ) {
                 val gridItemsSize = viewModel.getGridItemsSize()
 
-                items(count = state.shuffledImages.size) { idx ->
-                    if (idx + 1 <= gridItemsSize) {
-                        val imageUrl = state.shuffledImages[idx]
+                items(count = state.randomEggImages.size) { idx ->
+                    if (idx < gridItemsSize) {
+                        val imageUrl = state.randomEggImages[idx]
+                        val isFlipped = state.flippedCards.contains(idx) || state.matchedCards.contains(idx)
+                        val numFlipped = state.flippedCards.size
+
                         Image(
-                            painter = rememberAsyncImagePainter(model = imageUrl),
+                            painter = rememberAsyncImagePainter(model = if (isFlipped) imageUrl else null),
                             contentDescription = null,
                             modifier = Modifier
                                 .aspectRatio(ratio = 1f)
-                                .clickable { viewModel.checkImageClicked(imageUrl) },
-                            contentScale = ContentScale.Crop
+                                .clickable(enabled = !isFlipped && numFlipped != 2) {
+                                    viewModel.checkImageClicked(idx)
+                                }
+                                .border(
+                                    width = 1.dp,
+                                    color = if (isFlipped) Color.Transparent else MaterialTheme.colors.onSurface
+                                ),
+                            contentScale = ContentScale.Crop,
                         )
                     }
                 }

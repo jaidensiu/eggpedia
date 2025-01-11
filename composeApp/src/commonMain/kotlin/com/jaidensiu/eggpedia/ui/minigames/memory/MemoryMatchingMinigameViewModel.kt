@@ -4,10 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jaidensiu.eggpedia.data.repositories.egg.EggsRepository
 import com.jaidensiu.eggpedia.data.repositories.minigame.MinigamesRepository
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.datetime.Clock
 
 class MemoryMatchingMinigameViewModel(
     private val eggsRepository: EggsRepository,
@@ -19,17 +21,11 @@ class MemoryMatchingMinigameViewModel(
     fun initEggs() {
         viewModelScope.launch {
             try {
-                val eggs = eggsRepository.getRemoteEggs().associate { it.name to it.imageUrl }
-                val randomEggs = eggs.keys.shuffled().take(NUMBER_OF_EGGS)
-                val currentEgg = randomEggs.firstOrNull()
-                _state.update {
-                    it.copy(
-                        eggs = eggs,
-                        randomEggs = randomEggs,
-                        currentEgg = currentEgg
-                    )
-                }
-                shuffleImages()
+                val eggImages = eggsRepository.getRemoteEggs()
+                    .shuffled()
+                    .take(NUMBER_OF_EGGS)
+                    .map { it.imageUrl }
+                _state.update { it.copy(eggImages = eggImages) }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -41,11 +37,28 @@ class MemoryMatchingMinigameViewModel(
     }
 
     fun dismissDifficulty() {
-        _state.update { it.copy(difficulty = null) }
+        _state.update {
+            it.copy(
+                difficulty = null,
+                flippedCards = emptyList(),
+                matchedCards = emptyList(),
+                randomEggImages = emptyList()
+            )
+        }
     }
 
     fun onPlay() {
-        // TODO
+        val selectedEggImages = _state.value.eggImages.take(n = getGridItemsSize() / 2)
+        val randomEggImages = selectedEggImages.flatMap { listOf(it, it) }.shuffled()
+
+        _state.update {
+            it.copy(
+                randomEggImages = randomEggImages,
+                flippedCards = emptyList(),
+                matchedCards = emptyList(),
+                startTime = Clock.System.now()
+            )
+        }
     }
 
     fun getGridItemsSize(): Int {
@@ -54,51 +67,38 @@ class MemoryMatchingMinigameViewModel(
             MemoryMatchingMinigameDifficulty.MEDIUM -> MEDIUM_EGGS
             MemoryMatchingMinigameDifficulty.HARD -> HARD_EGGS
             null -> HARD_EGGS
+        }.let { it * 2 }
+    }
+
+    fun checkImageClicked(idx: Int) {
+        val flippedCards = _state.value.flippedCards.toMutableList()
+        val matchedCards = _state.value.matchedCards.toMutableList()
+
+        if (flippedCards.size == 2 || flippedCards.contains(idx) || matchedCards.contains(idx)) {
+            return
         }
-    }
 
-    fun checkImageClicked(imageUrl: String?) {
-        val currentEgg = _state.value.currentEgg
-        val nextIdx = _state.value.randomEggs.indexOf(currentEgg) + 1
-        val score = if (_state.value.eggs[currentEgg] == imageUrl) {
-            _state.value.score + 1
-        } else {
-            _state.value.score
+        flippedCards.add(idx)
+        _state.update { it.copy(flippedCards = flippedCards) }
+
+        if (flippedCards.size == 2) {
+            viewModelScope.launch {
+                if (_state.value.randomEggImages[flippedCards[0]] == _state.value.randomEggImages[flippedCards[1]]) {
+                    matchedCards.addAll(flippedCards)
+                } else {
+                    delay(timeMillis = 500L)
+                }
+
+                _state.update { it.copy(flippedCards = emptyList(), matchedCards = matchedCards) }
+            }
         }
-        _state.value = _state.value.copy(
-            currentEgg = _state.value.randomEggs[nextIdx],
-            errorMessage = null,
-            score = score
-        )
-        hideImages()
-        shuffleImages()
-        showImages()
-    }
-
-    private fun hideImages() {
-        // TODO
-    }
-
-    private fun showImages() {
-        // TODO
-    }
-
-    private fun shuffleImages() {
-        val currentEgg = _state.value.currentEgg ?: return
-        val correctImage = _state.value.eggs[currentEgg]
-        val otherImages = _state.value.eggs.values
-            .filter { it != correctImage }
-            .shuffled()
-            .take(n = getGridItemsSize() - 1)
-        val shuffledImages = (otherImages + correctImage).shuffled()
-        _state.value = _state.value.copy(shuffledImages = shuffledImages)
     }
 
     companion object {
-        const val NUMBER_OF_EGGS = 6
+        const val NUMBER_OF_EGGS = 4
         const val GRID_COLUMNS = 2
         const val EASY_EGGS = 2
-        const val MEDIUM_EGGS = 4
-        const val HARD_EGGS = 6
+        const val MEDIUM_EGGS = 3
+        const val HARD_EGGS = 4
     }
 }

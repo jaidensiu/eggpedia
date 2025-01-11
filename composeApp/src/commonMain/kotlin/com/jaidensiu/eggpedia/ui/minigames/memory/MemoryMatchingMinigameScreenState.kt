@@ -1,11 +1,14 @@
 package com.jaidensiu.eggpedia.ui.minigames.memory
 
+import kotlinx.datetime.Instant
+
 data class MemoryMatchingMinigameScreenState(
-    val eggs: Map<String, String> = emptyMap(),
-    val randomEggs: List<String> = emptyList(),
-    val currentEgg: String? = null,
+    val eggImages: List<String> = emptyList(),
+    val randomEggImages: List<String> = emptyList(),
+    val flippedCards: List<Int> = emptyList(),
+    val matchedCards: List<Int> = emptyList(),
     val difficulty: MemoryMatchingMinigameDifficulty? = null,
-    val shuffledImages: List<String?> = emptyList(),
     val errorMessage: String? = null,
-    val score: Int = 0
+    val startTime: Instant? = null,
+    val totalTime: Long? = null
 )
