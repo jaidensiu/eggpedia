@@ -106,7 +106,8 @@ fun MemoryMatchingMinigameScreen(
                 items(count = state.randomEggImages.size) { idx ->
                     if (idx < MemoryMatchingMinigameViewModel.TOTAL_CARDS) {
                         val imageUrl = state.randomEggImages[idx]
-                        val isFlipped = state.flippedCards.contains(idx) || state.matchedCards.contains(idx)
+                        val isFlipped =
+                            state.flippedCards.contains(idx) || state.matchedCards.contains(idx)
                         val numFlipped = state.flippedCards.size
 
                         Image(
@@ -130,7 +131,7 @@ fun MemoryMatchingMinigameScreen(
     }
 
     AnimatedVisibility(
-        visible = state.matchedCards.size ==  MemoryMatchingMinigameViewModel.TOTAL_CARDS && state.totalTime != null,
+        visible = state.matchedCards.size == MemoryMatchingMinigameViewModel.TOTAL_CARDS && state.totalTime != null,
         exit = ExitTransition.None
     ) {
         val totalTimeSeconds = state.totalTime?.div(other = 1000.0) ?: Double.MAX_VALUE
@@ -140,12 +141,11 @@ fun MemoryMatchingMinigameScreen(
         var bestTimeInfo by remember { mutableStateOf(value = "Best time: $beforeDecimal.$afterDecimal seconds") }
 
         LaunchedEffect(Unit) {
-            val bestTime = viewModel.getBestTime()
-            bestTimeInfo = if (bestTime == null) {
-                "Best time: $beforeDecimal.$afterDecimal seconds"
-            } else {
-                "Best time: ${bestTime / 1000.0} seconds"
-            }
+            viewModel.saveTime(time = state.totalTime)
+            val bestTimeSeconds = viewModel.getBestTime()?.div(other = 1000.0) ?: Double.MAX_VALUE
+            val before = floor(bestTimeSeconds).toInt()
+            val after = ((bestTimeSeconds - before) * 1000).toInt()
+            bestTimeInfo = "Best time: $before.$after seconds"
         }
 
         CustomDialog(
@@ -156,18 +156,12 @@ fun MemoryMatchingMinigameScreen(
             dismissText = "No",
             onConfirm = {
                 coroutineScope.launch {
-                    viewModel.saveTime(time = state.totalTime)
                     viewModel.onResetMinigameState()
                     viewModel.initEggs()
                     viewModel.onPlay()
                 }
             },
-            onDismiss = {
-                coroutineScope.launch {
-                    viewModel.saveTime(time = state.totalTime)
-                    onDismissGame()
-                }
-            }
+            onDismiss = onDismissGame
         )
     }
 }

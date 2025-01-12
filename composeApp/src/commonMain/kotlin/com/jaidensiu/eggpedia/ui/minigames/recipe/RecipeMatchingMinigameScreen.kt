@@ -138,12 +138,11 @@ fun RecipeMatchingMinigameScreen(
         var bestTimeInfo by remember { mutableStateOf(value = "Best time: $beforeDecimal.$afterDecimal seconds") }
 
         LaunchedEffect(Unit) {
-            val bestTime = viewModel.getBestTime()
-            bestTimeInfo = if (bestTime == null) {
-                "Best time: $beforeDecimal.$afterDecimal seconds"
-            } else {
-                "Best time: ${bestTime / 1000.0} seconds"
-            }
+            viewModel.saveTime(time = state.totalTime)
+            val bestTimeSeconds = viewModel.getBestTime()?.div(other = 1000.0) ?: Double.MAX_VALUE
+            val before = floor(bestTimeSeconds).toInt()
+            val after = ((bestTimeSeconds - before) * 1000).toInt()
+            bestTimeInfo = "Best time: $before.$after seconds"
         }
 
         CustomDialog(
@@ -154,18 +153,12 @@ fun RecipeMatchingMinigameScreen(
             dismissText = "No",
             onConfirm = {
                 coroutineScope.launch {
-                    viewModel.saveTime(time = state.totalTime)
                     viewModel.onResetMinigameState()
                     viewModel.initEggs()
                     viewModel.onPlay()
                 }
             },
-            onDismiss = {
-                coroutineScope.launch {
-                    viewModel.saveTime(time = state.totalTime)
-                    onDismissGame()
-                }
-            }
+            onDismiss = onDismissGame
         )
     }
 }
