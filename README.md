@@ -11,8 +11,6 @@ A Kotlin Multiplatform Android and iOS mobile app to explore recipes and play mi
   - [Modules](#modules)
 - [Built with](#built-with)
 - [How to run project](#how-to-run-project)
-  - [Android](#android)
-  - [iOS](#ios)
 - [License](#license)
 
 ## Motivation
