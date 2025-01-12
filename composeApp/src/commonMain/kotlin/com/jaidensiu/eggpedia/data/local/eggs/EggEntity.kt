@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.data.local.egg
+package com.jaidensiu.eggpedia.data.local.eggs
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

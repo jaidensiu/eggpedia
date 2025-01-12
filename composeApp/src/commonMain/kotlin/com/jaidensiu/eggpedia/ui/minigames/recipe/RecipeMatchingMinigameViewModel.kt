@@ -1,21 +1,21 @@
-package com.jaidensiu.eggpedia.ui.minigames.speed
+package com.jaidensiu.eggpedia.ui.minigames.recipe
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jaidensiu.eggpedia.app.Route
-import com.jaidensiu.eggpedia.data.repositories.egg.EggsRepository
-import com.jaidensiu.eggpedia.data.repositories.minigame.MinigamesRepository
+import com.jaidensiu.eggpedia.data.repositories.eggs.EggsRepository
+import com.jaidensiu.eggpedia.data.repositories.minigames.MinigamesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 
-class SpeedMatchingMinigameViewModel(
+class RecipeMatchingMinigameViewModel(
     private val eggsRepository: EggsRepository,
     private val minigamesRepository: MinigamesRepository
 ) : ViewModel() {
-    private val _state = MutableStateFlow(SpeedMatchingMinigameScreenState())
+    private val _state = MutableStateFlow(RecipeMatchingMinigameScreenState())
     val state = _state.asStateFlow()
 
     fun initEggs() {
@@ -43,20 +43,20 @@ class SpeedMatchingMinigameViewModel(
     }
 
     fun onResetMinigameState() {
-        _state.value = SpeedMatchingMinigameScreenState()
+        _state.value = RecipeMatchingMinigameScreenState()
     }
 
     suspend fun saveTime(time: Long?) {
         time?.let {
             minigamesRepository.saveMinigameBestTime(
                 time = it,
-                route = Route.SpeedMatchingMinigame
+                route = Route.RecipeMatchingMinigame
             )
         }
     }
 
     suspend fun getBestTime(): Long? {
-        return minigamesRepository.getSpeedMatchingBestTime()
+        return minigamesRepository.getRecipeMatchingBestTime()
     }
 
     fun checkImageClicked(imageUrl: String?) {

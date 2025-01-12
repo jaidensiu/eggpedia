@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.data.models.egg
+package com.jaidensiu.eggpedia.data.models.eggs
 
 import kotlinx.serialization.Serializable
 

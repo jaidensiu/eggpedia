@@ -1,47 +1,47 @@
-package com.jaidensiu.eggpedia.data.repositories.minigame
+package com.jaidensiu.eggpedia.data.repositories.minigames
 
 import androidx.sqlite.SQLiteException
 import com.jaidensiu.eggpedia.app.Route
-import com.jaidensiu.eggpedia.data.local.minigame.MinigameDao
-import com.jaidensiu.eggpedia.data.models.minigame.Minigame
-import com.jaidensiu.eggpedia.data.models.minigame.MinigameMappers.toMinigameEntity
+import com.jaidensiu.eggpedia.data.local.minigames.MinigamesDao
+import com.jaidensiu.eggpedia.data.models.minigames.Minigame
+import com.jaidensiu.eggpedia.data.models.minigames.MinigameMappers.toMinigameEntity
 
-class MinigamesRepository(private val minigameDao: MinigameDao) : IMinigamesRepository {
+class MinigamesRepository(private val minigamesDao: MinigamesDao) : IMinigamesRepository {
     override suspend fun saveMinigameBestTime(time: Long, route: Route) {
         try {
             val minigame = when (route) {
-                Route.SpeedMatchingMinigame -> {
+                Route.RecipeMatchingMinigame -> {
                     Minigame(
-                        speedMatchingTime = time,
+                        recipeMatchingTime = time,
                         memoryMatchingTime = null
                     )
                 }
 
                 Route.MemoryMatchingMinigame -> {
                     Minigame(
-                        speedMatchingTime = null,
+                        recipeMatchingTime = null,
                         memoryMatchingTime = time
                     )
                 }
 
                 else -> {
                     Minigame(
-                        speedMatchingTime = null,
+                        recipeMatchingTime = null,
                         memoryMatchingTime = null
                     )
                 }
             }
-            minigameDao.upsert(minigameEntity = minigame.toMinigameEntity())
+            minigamesDao.upsert(minigameEntity = minigame.toMinigameEntity())
         } catch (e: SQLiteException) {
             e.printStackTrace()
         }
     }
 
-    override suspend fun getSpeedMatchingBestTime(): Long? {
-        return minigameDao.getBestSpeedMatchingTime()
+    override suspend fun getRecipeMatchingBestTime(): Long? {
+        return minigamesDao.getBestRecipeMatchingTime()
     }
 
     override suspend fun getMemoryMatchingBestTime(): Long? {
-        return minigameDao.getBestMemoryMatchingTime()
+        return minigamesDao.getBestMemoryMatchingTime()
     }
 }

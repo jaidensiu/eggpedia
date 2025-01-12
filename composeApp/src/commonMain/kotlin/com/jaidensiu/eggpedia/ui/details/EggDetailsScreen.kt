@@ -27,9 +27,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.rememberAsyncImagePainter
-import com.jaidensiu.eggpedia.data.models.egg.Egg
+import com.jaidensiu.eggpedia.data.models.eggs.Egg
 import com.jaidensiu.eggpedia.ui.shared.CustomDialog
 import com.jaidensiu.eggpedia.ui.shared.isAndroid
 import eggpedia.composeapp.generated.resources.Res
@@ -112,9 +113,15 @@ fun EggDetailsScreen(
                         Text(text = "Cooking steps")
                         egg.cookingSteps.forEachIndexed { index, step ->
                             Row(modifier = Modifier.fillMaxWidth()) {
-                                Text(text = "Step ${index + 1}:")
+                                Text(
+                                    text = "Step ${index + 1}:",
+                                    fontSize = 14.sp
+                                )
                                 Spacer(modifier = Modifier.width(6.dp))
-                                Text(text = step)
+                                Text(
+                                    text = step,
+                                    fontSize = 14.sp
+                                )
                             }
                         }
                     }

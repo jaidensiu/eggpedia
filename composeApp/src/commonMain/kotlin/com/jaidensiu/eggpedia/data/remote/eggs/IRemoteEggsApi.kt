@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.data.remote.egg
+package com.jaidensiu.eggpedia.data.remote.eggs
 
 interface IRemoteEggsApi {
     suspend fun getEggs(): List<EggDto>

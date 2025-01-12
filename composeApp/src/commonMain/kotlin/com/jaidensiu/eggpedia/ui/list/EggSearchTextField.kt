@@ -23,7 +23,6 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.jaidensiu.eggpedia.app.Route
 import com.jaidensiu.eggpedia.ui.shared.isAndroid
 import com.jaidensiu.eggpedia.ui.theme.TextFieldPlaceHolder
 
@@ -34,7 +33,7 @@ fun EggSearchTextField(
     onSearchQueryChange: (String) -> Unit,
     focusRequester: FocusRequester,
     interactionSource: MutableInteractionSource,
-    route: Route
+    placeHolder: String? = null
 ) {
     val isFocused = interactionSource.collectIsFocusedAsState().value
 
@@ -59,15 +58,9 @@ fun EggSearchTextField(
             visualTransformation = VisualTransformation.None,
             interactionSource = interactionSource,
             placeholder = {
-                if (route == Route.EggsList) {
+                placeHolder?.let {
                     Text(
-                        text = "Search for a recipe",
-                        color = if (isFocused) Color.Transparent else TextFieldPlaceHolder(),
-                        maxLines = 1
-                    )
-                } else if (route == Route.SavedEggsList) {
-                    Text(
-                        text = "Search for a saved recipe",
+                        text = it,
                         color = if (isFocused) Color.Transparent else TextFieldPlaceHolder(),
                         maxLines = 1
                     )

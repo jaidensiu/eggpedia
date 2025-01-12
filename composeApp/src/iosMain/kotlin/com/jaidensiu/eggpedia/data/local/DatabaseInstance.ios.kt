@@ -9,7 +9,7 @@ import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
 
-actual class DatabaseInstance {
+actual class DatabaseFactory {
     actual fun create(): RoomDatabase.Builder<LocalDatabase> {
         val dbFile = documentDirectory() + "/${LocalDatabase.DB_NAME}"
 

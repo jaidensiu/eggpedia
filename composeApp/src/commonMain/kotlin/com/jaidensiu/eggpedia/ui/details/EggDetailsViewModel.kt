@@ -2,8 +2,8 @@ package com.jaidensiu.eggpedia.ui.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jaidensiu.eggpedia.data.models.egg.Egg
-import com.jaidensiu.eggpedia.data.repositories.egg.EggsRepository
+import com.jaidensiu.eggpedia.data.models.eggs.Egg
+import com.jaidensiu.eggpedia.data.repositories.eggs.EggsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn

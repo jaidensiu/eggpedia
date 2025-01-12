@@ -3,8 +3,8 @@ package com.jaidensiu.eggpedia.ui.minigames.memory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jaidensiu.eggpedia.app.Route
-import com.jaidensiu.eggpedia.data.repositories.egg.EggsRepository
-import com.jaidensiu.eggpedia.data.repositories.minigame.MinigamesRepository
+import com.jaidensiu.eggpedia.data.repositories.eggs.EggsRepository
+import com.jaidensiu.eggpedia.data.repositories.minigames.MinigamesRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

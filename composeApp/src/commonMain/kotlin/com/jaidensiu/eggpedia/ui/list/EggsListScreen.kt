@@ -33,7 +33,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import com.jaidensiu.eggpedia.app.Route
-import com.jaidensiu.eggpedia.data.models.egg.Egg
+import com.jaidensiu.eggpedia.data.models.eggs.Egg
 import com.jaidensiu.eggpedia.ui.shared.isAndroid
 import com.plusmobileapps.konnectivity.Konnectivity
 import eggpedia.composeapp.generated.resources.Res
@@ -112,7 +112,11 @@ fun EggsListScreen(
                     onSearchQueryChange = viewModel::onSearchQueryChange,
                     focusRequester = focusRequester,
                     interactionSource = interactionSource,
-                    route = route
+                    placeHolder = when (route) {
+                        Route.EggsList -> "Search for a recipe"
+                        Route.SavedEggsList -> "Search for a saved recipe"
+                        else -> null
+                    }
                 )
             }
             Spacer(modifier = Modifier.height(2.dp))

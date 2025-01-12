@@ -1,8 +1,8 @@
-package com.jaidensiu.eggpedia.ui.minigames.speed
+package com.jaidensiu.eggpedia.ui.minigames.recipe
 
 import kotlinx.datetime.Instant
 
-data class SpeedMatchingMinigameScreenState(
+data class RecipeMatchingMinigameScreenState(
     val eggs: Map<String, String> = emptyMap(),
     val randomEggs: List<String> = emptyList(),
     val currentEgg: String? = null,

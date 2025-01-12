@@ -1,7 +1,7 @@
 package com.jaidensiu.eggpedia.ui.shared
 
 import androidx.lifecycle.ViewModel
-import com.jaidensiu.eggpedia.data.models.egg.Egg
+import com.jaidensiu.eggpedia.data.models.eggs.Egg
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 

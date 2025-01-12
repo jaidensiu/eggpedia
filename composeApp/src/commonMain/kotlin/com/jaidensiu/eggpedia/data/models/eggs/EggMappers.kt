@@ -1,7 +1,7 @@
-package com.jaidensiu.eggpedia.data.models.egg
+package com.jaidensiu.eggpedia.data.models.eggs
 
-import com.jaidensiu.eggpedia.data.local.egg.EggEntity
-import com.jaidensiu.eggpedia.data.remote.egg.EggDto
+import com.jaidensiu.eggpedia.data.local.eggs.EggEntity
+import com.jaidensiu.eggpedia.data.remote.eggs.EggDto
 
 object EggMappers {
     fun EggDto.toEgg(): Egg {

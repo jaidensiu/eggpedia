@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.ui.minigames.speed
+package com.jaidensiu.eggpedia.ui.minigames.recipe
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
@@ -41,8 +41,8 @@ import org.koin.compose.viewmodel.koinViewModel
 import kotlin.math.floor
 
 @Composable
-fun SpeedMatchingMinigameScreen(
-    viewModel: SpeedMatchingMinigameViewModel = koinViewModel(),
+fun RecipeMatchingMinigameScreen(
+    viewModel: RecipeMatchingMinigameViewModel = koinViewModel(),
     onDismissGame: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
@@ -65,7 +65,7 @@ fun SpeedMatchingMinigameScreen(
     ) {
         CustomDialog(
             modifier = Modifier.padding(horizontal = 48.dp),
-            title = "Ready to play the speed matching minigame?",
+            title = "Ready to play the recipe matching minigame?",
             message = "Select the correct egg image based on the recipe name as fast as you can!",
             confirmText = stringResource(Res.string.yes),
             dismissText = stringResource(Res.string.no),
@@ -105,13 +105,13 @@ fun SpeedMatchingMinigameScreen(
             )
             Spacer(modifier = Modifier.height(24.dp))
             LazyVerticalGrid(
-                columns = GridCells.Fixed(count = SpeedMatchingMinigameViewModel.GRID_COLUMNS),
+                columns = GridCells.Fixed(count = RecipeMatchingMinigameViewModel.GRID_COLUMNS),
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(count = state.shuffledImages.size) { idx ->
-                    if (idx < SpeedMatchingMinigameViewModel.TOTAL_GRID_ITEMS) {
+                    if (idx < RecipeMatchingMinigameViewModel.TOTAL_GRID_ITEMS) {
                         val imageUrl = state.shuffledImages[idx]
                         Image(
                             painter = rememberAsyncImagePainter(model = imageUrl),

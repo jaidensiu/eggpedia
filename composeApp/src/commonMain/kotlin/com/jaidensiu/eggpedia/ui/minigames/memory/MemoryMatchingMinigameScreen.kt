@@ -67,7 +67,7 @@ fun MemoryMatchingMinigameScreen(
         CustomDialog(
             modifier = Modifier.padding(horizontal = 48.dp),
             title = "Ready to play the memory matching minigame?",
-            message = "Select pairs of hidden images that matches that match each other!",
+            message = "Find and match the pairs of hidden images as fast as you can!",
             confirmText = stringResource(Res.string.yes),
             dismissText = stringResource(Res.string.no),
             onConfirm = {

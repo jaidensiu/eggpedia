@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.data.local.minigame
+package com.jaidensiu.eggpedia.data.local.minigames
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 @Entity
 data class MinigameEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val speedMatchingTime: Long?,
+    val recipeMatchingTime: Long?,
     val memoryMatchingTime: Long?
 )

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "130c42bf6adfa480be6c23c986d76b36",
+    "identityHash": "17ed27960bddf0743f2b5ae9a662a355",
     "entities": [
       {
         "tableName": "EggEntity",
@@ -48,7 +48,7 @@
       },
       {
         "tableName": "MinigameEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `speedMatchingTime` INTEGER, `memoryMatchingTime` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `recipeMatchingTime` INTEGER, `memoryMatchingTime` INTEGER)",
         "fields": [
           {
             "fieldPath": "id",
@@ -57,8 +57,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "speedMatchingTime",
-            "columnName": "speedMatchingTime",
+            "fieldPath": "recipeMatchingTime",
+            "columnName": "recipeMatchingTime",
             "affinity": "INTEGER"
           },
           {
@@ -77,7 +77,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '130c42bf6adfa480be6c23c986d76b36')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '17ed27960bddf0743f2b5ae9a662a355')"
     ]
   }
 }

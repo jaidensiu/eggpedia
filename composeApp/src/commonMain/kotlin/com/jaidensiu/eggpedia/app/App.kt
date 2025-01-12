@@ -16,8 +16,8 @@ import com.jaidensiu.eggpedia.ui.minigames.MinigamesScreen
 import com.jaidensiu.eggpedia.ui.minigames.MinigamesViewModel
 import com.jaidensiu.eggpedia.ui.minigames.memory.MemoryMatchingMinigameScreen
 import com.jaidensiu.eggpedia.ui.minigames.memory.MemoryMatchingMinigameViewModel
-import com.jaidensiu.eggpedia.ui.minigames.speed.SpeedMatchingMinigameScreen
-import com.jaidensiu.eggpedia.ui.minigames.speed.SpeedMatchingMinigameViewModel
+import com.jaidensiu.eggpedia.ui.minigames.recipe.RecipeMatchingMinigameScreen
+import com.jaidensiu.eggpedia.ui.minigames.recipe.RecipeMatchingMinigameViewModel
 import com.jaidensiu.eggpedia.ui.shared.SelectedEggViewModel
 import com.jaidensiu.eggpedia.ui.theme.EggpediaTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -95,15 +95,15 @@ fun App() {
                     MinigamesScreen(
                         viewModel = viewModel,
                         onClickBack = { navController.navigateUp() },
-                        playSpeedMatchingMinigame = { navController.navigate(route = Route.SpeedMatchingMinigame) },
+                        playRecipeMatchingMinigame = { navController.navigate(route = Route.RecipeMatchingMinigame) },
                         playMemoryMatchingMinigame = { navController.navigate(route = Route.MemoryMatchingMinigame) }
                     )
                 }
 
-                composable<Route.SpeedMatchingMinigame> {
-                    val viewModel = koinViewModel<SpeedMatchingMinigameViewModel>()
+                composable<Route.RecipeMatchingMinigame> {
+                    val viewModel = koinViewModel<RecipeMatchingMinigameViewModel>()
 
-                    SpeedMatchingMinigameScreen(
+                    RecipeMatchingMinigameScreen(
                         viewModel = viewModel,
                         onDismissGame = { navController.navigateUp() }
                     )

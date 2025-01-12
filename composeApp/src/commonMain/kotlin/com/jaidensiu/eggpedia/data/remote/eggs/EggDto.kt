@@ -1,4 +1,4 @@
-package com.jaidensiu.eggpedia.data.remote.egg
+package com.jaidensiu.eggpedia.data.remote.eggs
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

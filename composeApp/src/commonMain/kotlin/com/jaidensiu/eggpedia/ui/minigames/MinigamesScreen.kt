@@ -34,7 +34,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun MinigamesScreen(
     viewModel: MinigamesViewModel = koinViewModel(),
     onClickBack: () -> Unit,
-    playSpeedMatchingMinigame: () -> Unit,
+    playRecipeMatchingMinigame: () -> Unit,
     playMemoryMatchingMinigame: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
@@ -89,12 +89,12 @@ fun MinigamesScreen(
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 Button(
-                    onClick = playSpeedMatchingMinigame,
+                    onClick = playRecipeMatchingMinigame,
                     modifier = Modifier.fillMaxWidth(fraction = 0.75f),
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
                 ) {
                     Text(
-                        text = "Speed matching",
+                        text = "Recipe matching",
                         color = MaterialTheme.colors.onPrimary
                     )
                 }

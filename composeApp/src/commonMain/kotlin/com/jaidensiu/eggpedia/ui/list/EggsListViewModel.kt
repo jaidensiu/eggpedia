@@ -3,7 +3,7 @@ package com.jaidensiu.eggpedia.ui.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jaidensiu.eggpedia.app.Route
-import com.jaidensiu.eggpedia.data.repositories.egg.EggsRepository
+import com.jaidensiu.eggpedia.data.repositories.eggs.EggsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
