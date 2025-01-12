@@ -68,12 +68,14 @@ fun MinigamesScreen(
         Spacer(modifier = Modifier.height(2.dp))
         if (!state.isConnectedToInternet || !isConnected) {
             Column(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = if (isAndroid) 50.dp else 72.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Internet connection is needed for the quiz game",
+                    text = "Internet connection is needed to play minigames",
                     color = MaterialTheme.colors.onBackground
                 )
             }
