@@ -8,7 +8,6 @@ A Kotlin Multiplatform Android and iOS mobile app to explore recipes and play mi
 - [My experience building with Kotlin Multiplatform](#my-experience-building-with-kotlin-multiplatform)
 - [Features](#features)
 - [Architecture](#architecture)
-  - [Modules](#modules)
 - [Built with](#built-with)
 - [How to run project](#how-to-run-project)
 - [License](#license)
@@ -19,9 +18,11 @@ As someone who likes to eat eggs (and write code in Kotlin), I envisioned an And
 
 ## My experience building with Kotlin Multiplatform
 
-TODO
+TODO: write about my experience with KMP
 
 ## Features
+
+TODO: add images
 
 - Home screen
 - Egg recipes screen
@@ -33,9 +34,9 @@ TODO
 
 ## Architecture
 
-The architecture mirrors the recommended architectural principles and best practices for building clean, scalable, and maintainable apps on Android.
+The architecture mirrors the recommended architectural principles and best practices for building clean, scalable, and maintainable apps for Android.
 
-### Modules
+Modules
 
 - `composeApp`
   - A Kotlin module that contains the logic shared among the Android and iOS apps
@@ -53,10 +54,13 @@ The architecture mirrors the recommended architectural principles and best pract
 - Ktor
 - Koin
 - Coil
+- Konnectivity
 
 ## How to run project
 
-These steps assume that your development environment is set up for both Android and iOS on a MacOS-based machine. You can also run the Android or iOS app on Android Studio with the run button wherever there is `composeApp` and `iosApp`. 
+These steps assume that your environment is set up for both Android and iOS development.
+
+Targets
 
 - Android
   - Open the project in Android studio and go through the run configurations
@@ -65,4 +69,4 @@ These steps assume that your development environment is set up for both Android 
 
 # License
 
-TODO
+TODO: add license
