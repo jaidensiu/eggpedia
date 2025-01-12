@@ -30,8 +30,8 @@ TODO
 - Saved/cached egg recipes screen
 - Egg details screen
 - Egg minigames
-  - An egg name and image matching minigame
-  - An egg memory minigame (in development...)
+  - Egg recipe matching minigame
+  - Egg memory matching minigame
 
 ## Architecture
 
