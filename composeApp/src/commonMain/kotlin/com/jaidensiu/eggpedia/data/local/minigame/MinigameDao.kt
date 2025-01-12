@@ -12,6 +12,6 @@ interface MinigameDao {
     @Query("SELECT MIN(speedMatchingTime) FROM MinigameEntity WHERE speedMatchingTime IS NOT NULL")
     suspend fun getBestSpeedMatchingTime(): Long?
 
-    @Query("SELECT MIN(speedMatchingTime) FROM MinigameEntity WHERE memoryMatchingTime IS NOT NULL")
+    @Query("SELECT MIN(memoryMatchingTime) FROM MinigameEntity WHERE memoryMatchingTime IS NOT NULL")
     suspend fun getBestMemoryMatchingTime(): Long?
 }

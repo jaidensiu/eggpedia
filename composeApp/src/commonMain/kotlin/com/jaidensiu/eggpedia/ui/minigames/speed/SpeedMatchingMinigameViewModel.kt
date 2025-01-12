@@ -86,14 +86,14 @@ class SpeedMatchingMinigameViewModel(
         val otherImages = _state.value.eggs.values
             .filter { it != correctImage }
             .shuffled()
-            .take(n = GRID_ITEMS_SIZE - 1)
+            .take(n = TOTAL_GRID_ITEMS - 1)
         val shuffledImages = (otherImages + correctImage).shuffled()
         _state.value = _state.value.copy(shuffledImages = shuffledImages)
     }
 
     companion object {
-        const val NUMBER_OF_EGGS = 6
+        const val NUMBER_OF_EGGS = 5
         const val GRID_COLUMNS = 2
-        const val GRID_ITEMS_SIZE = 4
+        const val TOTAL_GRID_ITEMS = 4
     }
 }

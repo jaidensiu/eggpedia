@@ -7,8 +7,6 @@ data class MemoryMatchingMinigameScreenState(
     val randomEggImages: List<String> = emptyList(),
     val flippedCards: List<Int> = emptyList(),
     val matchedCards: List<Int> = emptyList(),
-    val difficulty: MemoryMatchingMinigameDifficulty? = null,
-    val errorMessage: String? = null,
     val startTime: Instant? = null,
     val totalTime: Long? = null
 )

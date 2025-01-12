@@ -2,6 +2,7 @@ package com.jaidensiu.eggpedia.ui.minigames.memory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jaidensiu.eggpedia.app.Route
 import com.jaidensiu.eggpedia.data.repositories.egg.EggsRepository
 import com.jaidensiu.eggpedia.data.repositories.minigame.MinigamesRepository
 import kotlinx.coroutines.delay
@@ -25,49 +26,41 @@ class MemoryMatchingMinigameViewModel(
                     .shuffled()
                     .take(NUMBER_OF_EGGS)
                     .map { it.imageUrl }
-                _state.update { it.copy(eggImages = eggImages) }
+                val randomEggImages = eggImages
+                    .take(TOTAL_CARDS)
+                    .flatMap { listOf(it, it) }
+                    .shuffled()
+                _state.update {
+                    it.copy(
+                        eggImages = eggImages,
+                        randomEggImages = randomEggImages
+                    )
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
 
-    fun onSelectDifficulty(difficulty: MemoryMatchingMinigameDifficulty) {
-        _state.update { it.copy(difficulty = difficulty) }
-    }
-
-    fun dismissDifficulty() {
-        _state.update {
-            it.copy(
-                difficulty = null,
-                flippedCards = emptyList(),
-                matchedCards = emptyList(),
-                randomEggImages = emptyList()
-            )
-        }
-    }
-
     fun onPlay() {
-        val selectedEggImages = _state.value.eggImages.take(n = getGridItemsSize() / 2)
-        val randomEggImages = selectedEggImages.flatMap { listOf(it, it) }.shuffled()
+        _state.update { it.copy(startTime = Clock.System.now()) }
+    }
 
-        _state.update {
-            it.copy(
-                randomEggImages = randomEggImages,
-                flippedCards = emptyList(),
-                matchedCards = emptyList(),
-                startTime = Clock.System.now()
+    fun onResetMinigameState() {
+        _state.value = MemoryMatchingMinigameScreenState()
+    }
+
+    suspend fun saveTime(time: Long?) {
+        time?.let {
+            minigamesRepository.saveMinigameBestTime(
+                time = it,
+                route = Route.MemoryMatchingMinigame
             )
         }
     }
 
-    fun getGridItemsSize(): Int {
-        return when (_state.value.difficulty) {
-            MemoryMatchingMinigameDifficulty.EASY -> EASY_EGGS
-            MemoryMatchingMinigameDifficulty.MEDIUM -> MEDIUM_EGGS
-            MemoryMatchingMinigameDifficulty.HARD -> HARD_EGGS
-            null -> HARD_EGGS
-        }.let { it * 2 }
+    suspend fun getBestTime(): Long? {
+        return minigamesRepository.getMemoryMatchingBestTime()
     }
 
     fun checkImageClicked(idx: Int) {
@@ -92,13 +85,18 @@ class MemoryMatchingMinigameViewModel(
                 _state.update { it.copy(flippedCards = emptyList(), matchedCards = matchedCards) }
             }
         }
+
+        if (matchedCards.size == TOTAL_CARDS) {
+            val totalTime = Clock.System.now().toEpochMilliseconds().minus(
+                other = _state.value.startTime?.toEpochMilliseconds() ?: 0L
+            )
+            _state.value = _state.value.copy(totalTime = totalTime)
+        }
     }
 
     companion object {
         const val NUMBER_OF_EGGS = 4
         const val GRID_COLUMNS = 2
-        const val EASY_EGGS = 2
-        const val MEDIUM_EGGS = 3
-        const val HARD_EGGS = 4
+        const val TOTAL_CARDS = 8
     }
 }

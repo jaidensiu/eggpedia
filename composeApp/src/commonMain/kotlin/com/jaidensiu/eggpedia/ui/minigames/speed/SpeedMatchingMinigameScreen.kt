@@ -111,7 +111,7 @@ fun SpeedMatchingMinigameScreen(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(count = state.shuffledImages.size) { idx ->
-                    if (idx + 1 <= SpeedMatchingMinigameViewModel.GRID_ITEMS_SIZE) {
+                    if (idx < SpeedMatchingMinigameViewModel.TOTAL_GRID_ITEMS) {
                         val imageUrl = state.shuffledImages[idx]
                         Image(
                             painter = rememberAsyncImagePainter(model = imageUrl),
@@ -131,7 +131,7 @@ fun SpeedMatchingMinigameScreen(
         visible = state.totalTime != null,
         exit = ExitTransition.None
     ) {
-        val totalTimeSeconds = state.totalTime?.div(other = 1000.0) ?: 0.0
+        val totalTimeSeconds = state.totalTime?.div(other = 1000.0) ?: Double.MAX_VALUE
         val beforeDecimal = floor(totalTimeSeconds).toInt()
         val afterDecimal = ((totalTimeSeconds - beforeDecimal) * 1000).toInt()
         val timeInfo = "Time: $beforeDecimal.$afterDecimal seconds"
