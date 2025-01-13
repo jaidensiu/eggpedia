@@ -15,7 +15,7 @@ A Kotlin Multiplatform Android and iOS mobile app to explore recipes and play mi
 
 ## Motivation
 
-As someone who likes to eat eggs and is excited about Kotlin Multiplatform (KMP), I envisioned an Android and iOS app about eggs using KMP to combine my unique interests.
+As someone who likes to eat eggs and wanted to build a Kotlin Multiplatform (KMP) project from scratch, I envisioned an Android and iOS app about eggs using KMP to combine my unique interests.
 
 ## My experience building with Kotlin Multiplatform
 
@@ -30,17 +30,23 @@ Building with KMP has been an amazing learning experience. As an Android develop
 
 In summary, KMP has proven to be a powerful technology for building cross-platform applications. Whether you want to isolate business logic in a single KMP module while keeping native UI or fully write Kotlin for business logic and UI, I'm thrilled and convinced about KMP and look forward to leveraging it in my future work and projects.
 
+## Demo
+
+TODO: demo video
+
 ## Features
 
-TODO: add images
-
 - Home screen
-- Egg recipes screen
-- Saved/cached egg recipes screen
+  - Displays a greeting message and buttons for navigating to the egg list screens or minigames screen
+- Eggs list screen
+  - Displays egg list items from remote/local source with a search bar to filter for egg recipes by their name
 - Egg details screen
-- Egg minigames
-  - Egg recipe matching minigame
-  - Egg memory matching minigame
+  - Displays egg details from remote/local source with a button to save or remove the recipe from cache
+- Minigames
+  - Recipe matching minigame
+    - A timed minigame where the player needs to select the associated image with the recipe name
+  - Memory matching minigame
+    - A time minigame where the player needs to memorize and match pairs of hidden egg images
 
 ## Architecture
 
