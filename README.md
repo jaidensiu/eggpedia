@@ -19,7 +19,7 @@ As someone who likes to eat eggs and wanted to build a Kotlin Multiplatform (KMP
 
 ## My experience building with Kotlin Multiplatform
 
-Building with KMP has been an amazing learning experience. As an Android developer, I was able to transfer a lot of my knowledge to build a KMP app that targeted both Android and iOS. Being able to also build the UI on both platforms with Compose Multiplatform (CMP) was also amazing. KMP and CMP allowed for sharing business logic and UI code across Android and iOS, which significantly reduced the amount of effort needed to 2 apps while being able to unify business logic. Here are some of my key points from my experience:
+Building with KMP has been an amazing learning experience. As an Android developer, I was able to transfer a lot of my knowledge to build a KMP app that targeted both Android and iOS. As KMP allowed for writing the business logic once and having it shared across Android and iOS, being able to also implement the UI in Kotlin for both platforms with Compose Multiplatform (CMP) was also amazing. KMP and CMP allowed for sharing business logic and UI code across Android and iOS, which significantly reduced the amount of effort needed to build 2 apps while being able to unify business logic. Here are some of my key points from my experience:
 
 - Code sharing
   - The ability to write common business logic once without the need to restrict UI code in Kotlin and share it across platforms is game-changing
