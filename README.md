@@ -8,6 +8,7 @@ A Kotlin Multiplatform Android and iOS mobile app to explore recipes and play mi
 - [My experience building with Kotlin Multiplatform](#my-experience-building-with-kotlin-multiplatform)
 - [Features](#features)
 - [Architecture](#architecture)
+- [Modules](#modules)
 - [Built with](#built-with)
 - [How to run project](#how-to-run-project)
 - [License](#license)
@@ -43,11 +44,11 @@ TODO: add images
 
 ## Architecture
 
-The architecture mirrors the recommended architectural principles and best practices for building clean, scalable, and maintainable apps for Android. The app closely follows the Model-View-ViewModel architectural pattern adhering to techniques such as reactive and layered architecture, Unidirectional Data Flow (UDF), asynchronicity using coroutines and flows, state holders for UI, and dependency injection.
+The architecture mirrors the recommended architectural principles and best practices for building clean, scalable, and maintainable apps for Android. The app closely follows the Model-View-ViewModel design pattern adhering to techniques such as reactive and layered architecture, Unidirectional Data Flow (UDF), asynchronicity using coroutines and flows, state holders for UI, and dependency injection. The diagram below illustrates the app's architecture following MVVM and clean architecture.
 
-![architecture](images/architecture.png)
+![architecture](images/architecture.drawio.png)
 
-Modules
+## Modules
 
 - `composeApp`
   - A Kotlin module that contains the logic shared among the Android and iOS apps
