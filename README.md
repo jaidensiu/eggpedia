@@ -4,18 +4,37 @@ A Kotlin Multiplatform Android and iOS mobile app to explore recipes and play mi
 
 ## Table of contents
 
+- [Demo](#demo)
 - [Motivation](#motivation)
+- [Built with](#built-with)
 - [My experience building with Kotlin Multiplatform](#my-experience-building-with-kotlin-multiplatform)
 - [Features](#features)
 - [Architecture](#architecture)
 - [Modules](#modules)
-- [Built with](#built-with)
 - [How to run project](#how-to-run-project)
+- [Eggs JSON endpoint](#eggs-json-endpoint)
 - [License](#license)
+
+## Demo
+
+TODO: demo video
 
 ## Motivation
 
 As someone who likes to eat eggs and wanted to build a Kotlin Multiplatform (KMP) project from scratch, I envisioned an Android and iOS app about eggs using KMP to combine my unique interests.
+
+## Built with
+
+- [Kotlin](https://kotlinlang.org/)
+- [Gradle](https://gradle.org/)
+- [Kotlin Multiplatform](https://www.jetbrains.com/kotlin-multiplatform/)
+- [Compose Multiplatform](https://www.jetbrains.com/compose-multiplatform/)
+- [Room](https://developer.android.com/kotlin/multiplatform/room)
+- [SQLite](https://developer.android.com/kotlin/multiplatform/sqlite#sqlite-driver-implementations)
+- [Ktor](https://ktor.io/)
+- [Koin](https://insert-koin.io/)
+- [Coil](https://coil-kt.github.io/coil/)
+- [Konnectivity](https://github.com/mirego/konnectivity)
 
 ## My experience building with Kotlin Multiplatform
 
@@ -29,10 +48,6 @@ Building with KMP has been an amazing learning experience. As an Android develop
   - The performance of the shared code felt on par with platform-specific implementations made possible by the Kotlin interoperability with Swift/Objective-C
 
 In summary, KMP has proven to be a powerful technology for building cross-platform applications. Whether you want to isolate business logic in a single KMP module while keeping native UI or fully write Kotlin for business logic and UI, I'm thrilled and convinced about KMP and look forward to leveraging it in my future work and projects.
-
-## Demo
-
-TODO: demo video
 
 ## Features
 
@@ -61,19 +76,6 @@ The architecture mirrors the recommended architectural principles and best pract
 - `iosApp`
   - An Xcode project that builds into an iOS application that depends on and uses the shared module as an iOS framework
 
-## Built with
-
-- [Kotlin](https://kotlinlang.org/)
-- [Gradle](https://gradle.org/)
-- [Kotlin Multiplatform](https://www.jetbrains.com/kotlin-multiplatform/)
-- [Compose Multiplatform](https://www.jetbrains.com/compose-multiplatform/)
-- [Room](https://developer.android.com/kotlin/multiplatform/room)
-- [SQLite](https://developer.android.com/kotlin/multiplatform/sqlite#sqlite-driver-implementations)
-- [Ktor](https://ktor.io/)
-- [Koin](https://insert-koin.io/)
-- [Coil](https://coil-kt.github.io/coil/)
-- [Konnectivity](https://github.com/mirego/konnectivity)
-
 ## How to run project
 
 These steps assume that your environment is set up for both Android and iOS development.
@@ -84,6 +86,10 @@ Targets
   - Open the project in Android studio and go through the run configurations
 - iOS
   - Open the project in Xcode and go through the run configurations
+
+## Eggs JSON endpoint
+
+The eggs JSON endpoint serves as the remote data source. The data could be found [here](https://jaidensiu.vercel.app/eggs.json).
 
 # License
 
