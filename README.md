@@ -17,7 +17,7 @@ A Kotlin Multiplatform Android and iOS mobile app to explore recipes and play mi
 
 ## Demo
 
-![demo](https://raw.githubusercontent.com/jaidensiu/eggpedia/master/readme/eggpedia.mp4)
+https://github.com/user-attachments/assets/990c9ffe-9ae4-4fd8-8664-ba59a8989a2a
 
 ## Motivation
 
