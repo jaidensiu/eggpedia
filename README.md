@@ -17,7 +17,10 @@ A Kotlin Multiplatform Android and iOS mobile app to explore recipes and play mi
 
 ## Demo
 
-TODO: demo video
+<video controls>
+  <source src="readme/eggpedia.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Motivation
 
@@ -67,7 +70,7 @@ In summary, KMP has proven to be a powerful technology for building cross-platfo
 
 The architecture mirrors the recommended architectural principles and best practices for building clean, scalable, and maintainable apps for Android. The app closely follows the Model-View-ViewModel design pattern adhering to techniques such as reactive and layered architecture, Unidirectional Data Flow (UDF), asynchronicity using coroutines and flows, state holders for UI, and dependency injection. The diagram below illustrates the app's architecture following MVVM and clean architecture.
 
-![architecture](images/architecture.drawio.png)
+![architecture](readme/architecture.drawio.png)
 
 ## Modules
 
