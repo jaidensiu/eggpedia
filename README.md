@@ -17,10 +17,7 @@ A Kotlin Multiplatform Android and iOS mobile app to explore recipes and play mi
 
 ## Demo
 
-<video controls>
-  <source src="readme/eggpedia.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![demo](https://raw.githubusercontent.com/jaidensiu/eggpedia/master/readme/eggpedia.mp4)
 
 ## Motivation
 
